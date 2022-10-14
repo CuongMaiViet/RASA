@@ -148,6 +148,9 @@ nlu:
     - tư vấn hệ thống trung tâm liên lạc
     - anh cần tư vấn hệ thống trung tâm liên lạc
     - chị cần một hệ thống trung tâm liên lạc
+    - tư vấn hệ thống
+    - tư vấn trung tâm liên lạc
+    - hệ thống trung tâm liên lạc
 
 - intent: tư_vấn_hệ_thống_trung_tâm_liên_lạc_cho_doanh_nghiệp
   examples: |
