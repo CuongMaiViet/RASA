@@ -1,0 +1,200 @@
+version: "3.1"
+
+nlu:
+- intent: chào_mừng
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+    - chào
+    - xin chào
+    - chào buổi sáng
+    - chào buổi chiều
+    - chào buổi tối
+    - [anh](user_title) chào em
+    - [chị](user_title) chào em
+
+- intent: tạm_biệt
+  examples: |
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+    - tạm biệt
+    - tam biet
+
+- intent: hỏi_gì_đó
+  examples: |
+    - shop ơi cho mình hỏi cái
+    - em ơi cho [anh](user_title) hỏi tí
+    - bạn ơi, mình nhờ chút
+    - [chị](user_title) có thứ muốn hỏi
+
+- intent: channel
+  examples: |
+    - kênh hiện tại là [ChannelWebWidget](channel)
+    - kênh hiện tại là [ChannelApi](channel)
+
+- intent: xem_menu
+  examples: |
+    - cho tớ xem menu chính
+    - menu chính là gì
+    - xem lại menu
+    - tôi muốn xem các sản phẩm, dịch vụ của công ty
+    - bên mình có những dịch vụ gì
+    - Nêu các sản phẩm bên bạn có đi
+    - Này, tôi muốn biết các sản phẩm bên mình cung cấp
+    - cho [anh](user_title) xem menu
+    - cho [chị](user_title) xem menu
+    - [chị](user_title) muốn coi menu
+    - [anh](user_title) muốn coi menu
+
+- intent: cung_cấp_giới_tính
+  examples: |
+    - [nữ](user_title)
+    - [nam](user_title)
+    - [female](user_title)
+    - [male](user_title)
+
+- intent: cung_cấp_tên
+  examples: |
+    - [Cường](user_name)
+    - [Đạt](user_name)
+    - [Đại](user_name)
+    - [Nhi](user_name)
+    - [Toán](user_name)
+    - [Dũng](user_name)
+    - tên là [Toán](user_name)
+    - tên là [Đại](user_name)
+    - anh tên [Toàn](user_name)
+    - chị tên [Hà](user_name)
+    - chị tên [nhi](user_name)
+    - anh tên [toán](user_name)
+    - anh tên [đạt](user_name)
+    - anh tên [đại](user_name)
+
+- intent: cung_cấp_email
+  examples: |
+    - [l9931451@gmail.com](user_email)
+    - [cs31@dqn.vn](user_email)
+    - email là [nguyenquangtoan@dqn.vn](user_email)
+    - [abc@getfly.vn](user_email)
+    - [phanthanhdat1209@gmail.com](user_email)
+  
+- intent: cung_cấp_số_điện_thoại
+  examples: |
+    - [84366166535](user_phone)
+    - [84377123945](user_phone)
+    - số điện thoại là [84377261531](user_phone)
+
+- intent: cung_cấp_địa_chỉ_website
+  examples: |
+    - [shop.dqn.vn](user_website)
+    - [dqnco.com](user_website)
+    - [epacific.com.vn](user_website)
+
+- intent: gặp_chuyên_viên_tư_vấn_giải_pháp
+  examples: |
+    - [anh](user_title) muốn nói chuyện với sales
+    - [chị](user_title) muốn nói chuyện với bán hàng
+    - [anh](user_title) muốn được tư vấn
+    - [chị](user_title) muốn mua hàng
+    - tư vấn giải pháp
+
+- intent: khách_hàng_hiện_hữu
+  examples: |
+    - [anh](user_title) đã là khách hàng và cần được hỗ trợ
+    - [chị](user_title) đã là khách hàng muốn được hỗ trợ
+    - [anh](user_title) từng là khách hàng
+    - [chị](user_title) từng là khách hàng
+
+- intent: tìm_kiếm_thông_tin
+  examples: |
+    - [anh](user_title) muốn tìm kiếm thêm thông tin
+    - [chị](user_title) đang tìm kiếm thêm thông tin
+    - [anh](user_title) muốn biết thêm thông tin
+    - [chị](user_title) muốn biết thêm thông 
+    
+- intent: đăng_ký_làm_đại_lý
+  examples: |
+    - [anh](user_title) muốn đăng ký làm đối tác của công ty
+    - [chị](user_title) đang đăng ký làm đại lý của công ty
+    - [anh](user_title) muốn tìm hiểu về chương trình đối tác của công ty
+    - [chị](user_title) muốn biết thêm về chính sách đại lý của công ty
+
+- intent: tư_vấn_hệ_thống_trung_tâm_liên_lạc
+  examples: |
+    - tư vấn hệ thống trung tâm liên lạc
+    - anh cần tư vấn hệ thống trung tâm liên lạc
+    - chị cần một hệ thống trung tâm liên lạc
+
+- intent: tư_vấn_hệ_thống_trung_tâm_liên_lạc_cho_doanh_nghiệp
+  examples: |
+    - tư vấn hệ thống trung tâm liên lạc cho doanh nghiệp
+    - doanh nghiệp của anh cần hệ thống trung tâm liên lạc, tư vấn giúp anh
+    - anh cần một hệ thống trung tâm liên lạc cho doanh nghiệp
+    - cho doanh nghiệp
+    - cho doanh nghiệp của anh
+    - cho anh
+    - cho chị
+
+- intent: tư_vấn_hệ_thống_trung_tâm_liên_lạc_cho_khách_hàng
+  examples: |
+    - tư vấn hệ thống trung tâm liên lạc cho khách hàng
+    - khách hàng của công ty anh cần hệ thống trung tâm liên lạc
+    - anh cần một hệ thống trung tâm liên lạc cho khách hàng của anh
+    - em có triển khai trung tâm liên lạc nào tốt cho khách hàng của anh được không
+    - cho khách hàng
+    - cho khách của chị
+    - cho khách anh
+
+- intent: đánh_giá_các_sản_phẩm_khác_của_ePacific
+  examples: |
+    - đánh giá các sản phẩm khác của ePacific
+    - anh đang coi các sản phẩm khác của công ty em
+    - chị đang xem những sản phẩm khác của epacific
+
+- intent: hỗ_trợ_kỹ_thuật_sử_dụng
+  examples: |
+    - hỗ trợ kỹ thuật và sử dụng
+    - anh cần hỗ trợ kỹ thuật
+    - anh cần hỗ trợ sử dụng
+    - chị cần hỗ trợ ký thuật
+    - chị cần hỗ trợ sử dụng
+
+- intent: xử_lý_đơn_hàng_hoa_đơn
+  examples: |
+    - xử lý đơn hàng hóa đơn
+    - anh có đơn hàng hóa đơn cần xử lý
+    - chị có đơn hàng hóa đơn cần xử lý
+
+- intent: xử_lý_đơn_hàng
+  examples: |
+    - xử lý đơn hàng 
+    - anh có đơn hàng cần xử lý
+    - chị có đơn hàng cần xử lý
+
+- intent: xử_lý_hóa_đơn
+  examples: |
+    - xử lý hóa đơn 
+    - anh có hóa đơn cần xử lý
+    - chị có hóa đơn cần xử lý
+
+
+

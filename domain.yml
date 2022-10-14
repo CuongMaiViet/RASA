@@ -1,0 +1,162 @@
+version: "3.1"
+
+intents:
+  - chào_mừng
+  - tạm_biệt
+  - channel
+  - xem_menu
+  - hỏi_gì_đó
+  # INFORMATION
+  - cung_cấp_giới_tính
+  - cung_cấp_tên
+  - cung_cấp_email
+  - cung_cấp_số_điện_thoại
+  - cung_cấp_địa_chỉ_website
+  # LVL0
+  - gặp_chuyên_viên_tư_vấn_giải_pháp
+  - khách_hàng_hiện_hữu
+  - tìm_kiếm_thông_tin
+  - đăng_ký_làm_đại_lý
+  # LVL1
+  - tư_vấn_hệ_thống_trung_tâm_liên_lạc
+  - tư_vấn_hệ_thống_trung_tâm_liên_lạc_cho_doanh_nghiệp
+  - tư_vấn_hệ_thống_trung_tâm_liên_lạc_cho_khách_hàng
+  - đánh_giá_các_sản_phẩm_khác_của_ePacific
+  - hỗ_trợ_kỹ_thuật_sử_dụng
+  - xử_lý_đơn_hàng_hoa_đơn
+  - xử_lý_đơn_hàng
+  - xử_lý_hóa_đơn
+
+responses:
+  utter_tạm_biệt:
+    - text: "Chào tạm biệt {user_title} {user_name}. Hẹn gặp lại {user_title} nha ^^"
+
+  utter_tư_vấn_hệ_thống_trung_tâm_liên_lạc:
+    - text: "Cho doanh nghiệp của {user_title} hay cho khách hàng của {user_title} ạ?"
+  
+  utter_em_nghe_nè:
+  - text: "Dạ vâng, Mai nghe nè"
+
+  utter_default:
+    - text: "Xin lỗi, em không hiểu. Vui lòng diễn đạt lại giúp em ạ"
+    - text: "Xin lỗi {user_title}, em không hiểu lắm, {user_title} làm ơn diễn đạt lại giúp em nha ạ"
+    - text: "Mai xin lỗi, em không hiểu được ý của {user_title}. Diễn đạt lại giúp em nha"
+
+  utter_ask_rephrase:
+    - text: "Xin lỗi, em không hiểu. Vui lòng diễn đạt lại giúp em ạ"
+    - text: "Xin lỗi {user_title}, em không hiểu lắm, {user_title} làm ơn diễn đạt lại giúp em nha ạ"
+    - text: "Mai xin lỗi, Mai không hiểu được ý của {user_title}. Diễn đạt lại giúp Mai nha"
+
+  utter_ask_user_name:
+    - text: "Em có thể biết tên của {user_title} được không ạ?"
+    - text: "Vui lòng cho em biết tên của {user_title} ạ"
+    - text: "Tên của {user_title} là gì vậy ạ?"
+    - text: "Cho Mai xin tên của {user_title} đi ạ"
+  
+  utter_ask_user_title:
+    - text: "Quý khách là nam hay nữ ạ?"
+    - text: "Xin hỏi vị khách quý đây là nam hay nữ vậy ạ?"
+    - text: "Xin hỏi quý khách đây là nam hay nữ vậy ạ?"
+    - text: "Mai muốn biết quý khách đây là nữ hay là nam vậy ạ?"
+
+  utter_ask_user_email:
+    - text: "Cho em xin email của {user_title} đi ạ"
+    - text: "Cho Mai xin email của {user_title} đi ạ"
+    - text: "Email của {user_title} là gì vậy ạ?"
+    - text: "Vui lòng {user_title} cho Mai xin email"
+
+  utter_ask_user_phone:
+    - text: "Cho Mai xin số điện thoại của {user_title} đi ạ"
+    - text: "Số điện thoại của {user_title} là gì vậy ạ?"
+    - text: "Cho em xin số điện thoại của {user_title} đi ạ"
+
+  utter_ask_user_website:
+    - text: "Website công ty của {user_title} là gì thế ạ?"
+    - text: "Cho Mai xin địa chỉ website của công ty {user_title} đi ạ"
+    - text: "Cho em xin địa chỉ website của công ty {user_title} đi ạ"
+
+actions:
+  - action_greet
+  - action_main
+  - action_handoff
+  - action_explain_fill_form
+  - validate_user_information_form
+  - validate_email_phone_website_form
+  - validate_email_form
+  - validate_email_phone_form
+
+entities:
+  - channel
+  - user_title
+  - user_name
+  - user_email
+  - user_phone
+  - user_website
+
+slots:
+  channel:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: channel
+
+  user_title:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: user_title
+
+  user_name:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: user_name
+
+  user_email:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: user_email
+
+  user_phone:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: user_phone
+
+  user_website:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: user_website
+
+forms:
+  user_information_form:
+    required_slots:
+      - user_title
+      - user_name
+
+  email_phone_website_form:
+    required_slots:
+      - user_email
+      - user_phone
+      - user_website
+
+  email_form:
+    required_slots:
+      - user_email
+
+  email_phone_form:
+    required_slots:
+      - user_email
+      - user_phone
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

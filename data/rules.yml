@@ -1,0 +1,165 @@
+version: "3.1"
+
+rules:
+# Chào mừng
+- rule: chào_mừng
+  steps:
+  - intent: chào_mừng
+  - action: action_greet
+  - action: user_information_form
+  - active_loop: user_information_form
+
+- rule: Finish user_information_form
+  condition:
+    - active_loop: user_information_form
+  steps:
+    - action: user_information_form
+    - active_loop: null
+    - slot_was_set:
+        - requested_slot: null
+    - action: action_main
+
+# Fallback  
+- rule: nlu_fallback
+  steps:
+  - intent: nlu_fallback
+  - action: utter_ask_rephrase
+  
+# Hỏi gì đó  
+- rule: hỏi_gì_đó
+  steps:
+  - intent: hỏi_gì_đó
+  - action: utter_em_nghe_nè
+
+# Gặp chuyên viên tư vấn giải pháp
+- rule: gặp_chuyên_viên_tư_vấn_giải_pháp
+  steps:
+  - intent: gặp_chuyên_viên_tư_vấn_giải_pháp
+  - action: action_explain_fill_form
+  - action: email_form
+  - active_loop: email_form
+
+- rule: Finish email_form
+  condition:
+    - active_loop: email_form
+  steps:
+    - action: email_form
+    - active_loop: null
+    - slot_was_set:
+        - requested_slot: null
+    - action: action_main
+
+# Tư vấn hệ thống trung tâm liên lạc
+- rule: tư_vấn_hệ_thống_trung_tâm_liên_lạc
+  steps:
+  - intent: tư_vấn_hệ_thống_trung_tâm_liên_lạc
+  - action: utter_tư_vấn_hệ_thống_trung_tâm_liên_lạc
+  
+# Tư vấn hệ thống cho doanh nghiệp
+- rule: tư_vấn_hệ_thống_trung_tâm_liên_lạc_cho_doanh_nghiệp
+  steps:
+  - intent: tư_vấn_hệ_thống_trung_tâm_liên_lạc_cho_doanh_nghiệp
+  - action: action_handoff
+
+# Tư vấn hệ thống cho khách hàng
+- rule: tư_vấn_hệ_thống_trung_tâm_liên_lạc_cho_khách_hàng
+  steps:
+  - intent: tư_vấn_hệ_thống_trung_tâm_liên_lạc_cho_khách_hàng
+  - action: action_handoff
+
+# Đánh giá các sản phẩm khác của ePacfic
+- rule: đánh_giá_các_sản_phẩm_khác_của_ePacific
+  steps:
+  - intent: đánh_giá_các_sản_phẩm_khác_của_ePacific
+  - action: action_handoff
+
+# Khách hàng hiện hữu
+- rule: khách_hàng_hiện_hữu
+  steps:
+  - intent: khách_hàng_hiện_hữu
+  - action: action_main
+
+# Hỗ trợ kỹ thuật sử dụng
+- rule: hỗ_trợ_kỹ_thuật_sử_dụng
+  steps:
+  - intent: hỗ_trợ_kỹ_thuật_sử_dụng
+  - action: action_explain_fill_form
+  - action: email_phone_form
+  - active_loop: email_phone_form
+
+- rule: Finish email_phone_form
+  condition:
+    - active_loop: email_phone_form
+  steps:
+    - action: email_phone_form
+    - active_loop: null
+    - slot_was_set:
+        - requested_slot: null
+    - action: action_handoff
+
+# Xử lý đơn hàng, hóa đơn
+- rule: xử_lý_đơn_hàng_hoa_đơn
+  steps:
+  - intent: xử_lý_đơn_hàng_hoa_đơn  
+  - action: action_main
+
+# Xử lý đơn hàng
+- rule: xử_lý_đơn_hàng
+  steps:
+  - intent: xử_lý_đơn_hàng
+  - action: action_explain_fill_form
+  - action: email_phone_form
+  - active_loop: email_phone_form
+
+- rule: Finish email_phone_form
+  condition:
+    - active_loop: email_phone_form
+  steps:
+    - action: email_phone_form
+    - active_loop: null
+    - slot_was_set:
+        - requested_slot: null
+    - action: action_handoff
+
+# Xử lý hóa đơn
+- rule: xử_lý_hóa_đơn
+  steps:
+  - intent: xử_lý_hóa_đơn
+  - action: action_explain_fill_form
+  - action: email_phone_form
+  - active_loop: email_phone_form
+
+- rule: Finish email_phone_form
+  condition:
+    - active_loop: email_phone_form
+  steps:
+    - action: email_phone_form
+    - active_loop: null
+    - slot_was_set:
+        - requested_slot: null
+    - action: action_handoff
+
+# Tìm kiếm thông tin
+- rule: tìm_kiếm_thông_tin
+  steps:
+  - intent: tìm_kiếm_thông_tin
+  - action: action_main
+
+# Đăng ký làm đối tác đại lý
+- rule: đăng_ký_làm_đại_lý
+  steps:
+  - intent: đăng_ký_làm_đại_lý
+  - action: action_explain_fill_form
+  - action: email_phone_website_form
+  - active_loop: email_phone_website_form
+
+- rule: Finish email_phone_website_form
+  condition:
+    - active_loop: email_phone_website_form
+  steps:
+    - action: email_phone_website_form
+    - active_loop: null
+    - slot_was_set:
+        - requested_slot: null
+    - action: action_handoff
+

@@ -1,0 +1,13 @@
+version: "3.1"
+
+stories:
+
+- story: xem_menu
+  steps:
+  - intent: xem_menu
+  - action: action_main
+
+- story: tạm_biệt
+  steps:
+  - intent: tạm_biệt
+  - action: utter_tạm_biệt

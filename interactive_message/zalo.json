@@ -1,0 +1,14 @@
+{
+  "recipient": {
+    "user_id": ""
+  },
+  "message": {
+    "text": "",
+    "attachment": {
+      "type": "template",
+      "payload": {
+        "template_type": ""
+      }
+    }
+  }
+}
