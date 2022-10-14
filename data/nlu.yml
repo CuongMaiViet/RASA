@@ -111,32 +111,37 @@ nlu:
 
 - intent: gặp_chuyên_viên_tư_vấn_giải_pháp
   examples: |
-    - [anh](user_title) muốn nói chuyện với sales
-    - [chị](user_title) muốn nói chuyện với bán hàng
-    - [anh](user_title) muốn được tư vấn
-    - [chị](user_title) muốn mua hàng
+    - anh muốn nói chuyện với sales
+    - chị muốn nói chuyện với bán hàng
+    - anh muốn được tư vấn
+    - chị muốn mua hàng
     - tư vấn giải pháp
 
 - intent: khách_hàng_hiện_hữu
   examples: |
-    - [anh](user_title) đã là khách hàng và cần được hỗ trợ
-    - [chị](user_title) đã là khách hàng muốn được hỗ trợ
-    - [anh](user_title) từng là khách hàng
-    - [chị](user_title) từng là khách hàng
+    - anh đã là khách hàng và cần được hỗ trợ
+    - chị đã là khách hàng muốn được hỗ trợ
+    - anh từng là khách hàng
+    - chị từng là khách hàng
+    - anh đang là khách hàng bên em
+    - chị đang là khách hàng bên em
+    - đang là khách hàng
+    - đã là khách hàng
+    - từng là khách hàng
 
 - intent: tìm_kiếm_thông_tin
   examples: |
-    - [anh](user_title) muốn tìm kiếm thêm thông tin
-    - [chị](user_title) đang tìm kiếm thêm thông tin
-    - [anh](user_title) muốn biết thêm thông tin
-    - [chị](user_title) muốn biết thêm thông 
+    - anh muốn tìm kiếm thêm thông tin
+    - chị đang tìm kiếm thêm thông tin
+    - anh muốn biết thêm thông tin
+    - chị muốn biết thêm thông 
     
 - intent: đăng_ký_làm_đại_lý
   examples: |
-    - [anh](user_title) muốn đăng ký làm đối tác của công ty
-    - [chị](user_title) đang đăng ký làm đại lý của công ty
-    - [anh](user_title) muốn tìm hiểu về chương trình đối tác của công ty
-    - [chị](user_title) muốn biết thêm về chính sách đại lý của công ty
+    - anh muốn đăng ký làm đối tác của công ty
+    - chị đang đăng ký làm đại lý của công ty
+    - anh muốn tìm hiểu về chương trình đối tác của công ty
+    - chị muốn biết thêm về chính sách đại lý của công ty
 
 - intent: tư_vấn_hệ_thống_trung_tâm_liên_lạc
   examples: |
