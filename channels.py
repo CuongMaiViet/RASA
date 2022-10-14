@@ -43,6 +43,20 @@ class Channels:
                      "value": '/đăng_ký_làm_đại_lý'}
                 ]
             },
+            "cung_cấp_giới_tính": {
+                "message": utter.chào_mừng(),
+                "message_type": "full_of_text",
+                "payload": [
+                    {"title": f"{capTitle} muốn nói chuyện với chuyên viên tư vấn giải pháp",
+                     "value": '/gặp_chuyên_viên_tư_vấn_giải_pháp'},
+                    {"title": f"{capTitle} đang là khách hàng của bên công ty {bot_name}",
+                     "value": '/khách_hàng_hiện_hữu'},
+                    {"title": f"{capTitle} đang tìm hiểu thông tin",
+                     "value": '/tìm_kiếm_thông_tin'},
+                    {"title": f"{capTitle} muốn trở thành đối tác, đại lý của ePacific Telecom",
+                     "value": '/đăng_ký_làm_đại_lý'}
+                ]
+            },
             "cung_cấp_tên": {
                 "message": utter.chào_mừng(),
                 "message_type": "full_of_text",
