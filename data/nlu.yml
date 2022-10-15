@@ -116,6 +116,9 @@ nlu:
     - anh muốn được tư vấn
     - chị muốn mua hàng
     - tư vấn giải pháp
+    - gặp chuyên viên
+    - nói chuyện với chuyên viên tư vấn
+    - gặp tư vấn viên
 
 - intent: khách_hàng_hiện_hữu
   examples: |
@@ -134,7 +137,8 @@ nlu:
     - anh muốn tìm kiếm thêm thông tin
     - chị đang tìm kiếm thêm thông tin
     - anh muốn biết thêm thông tin
-    - chị muốn biết thêm thông 
+    - chị muốn biết thêm thông tin
+    - các giải pháp cải thiện trải nghiệm
     
 - intent: đăng_ký_làm_đại_lý
   examples: |

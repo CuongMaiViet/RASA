@@ -31,7 +31,7 @@ class ActionGreet(Action):
             dispatcher.utter_message(
                 text=f"Xin chào! Em là Mai, trợ lý số của công ty")
             dispatcher.utter_message(
-                text=f"Trước khi em có thể hỗ trợ {user_title}, cho em xin một số thông tin cơ bản của {user_title} để dễ dàng nói chuyện ạ")
+                text=f"Trước khi em có thể hỗ trợ {user_title}, cho em xin một số thông tin cơ bản của {user_title} để tiện xưng hô ạ")
 
         # elif user_name is not None:
         #     dispatcher.utter_message(
