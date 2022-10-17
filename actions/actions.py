@@ -6,7 +6,7 @@ from rasa_sdk.types import DomainDict
 
 from responses import Responses
 from User import User
-from functions import check_agent_availability, check_name, is_alphabet, is_valid_domain, is_valid_e164, is_valid_email, read_json
+from functions import check_agent_availability, check_name, is_alphabet, is_valid_site, is_valid_phone_number, is_valid_email, read_json
 
 MALE = ["nam", "male", "anh"]
 FEMALE = ["nữ", "female", "chị"]
@@ -225,7 +225,7 @@ class ValidateUserInformationForm(FormValidationAction):
                 text=f"Tên {user_title} không nên chứa số hay ký tự đặc biệt vì nó không phải là một cái tên đúng @@")
             return {"user_name": None}
 
-        checked_name = check_name(slot_value) 
+        checked_name = check_name(slot_value)
         if checked_name is None:
             dispatcher.utter_message(
                 text=f"Em tìm trong từ điển không thấy tên của {user_title}. Vui lòng cung cấp lại")
@@ -246,8 +246,9 @@ class ValidateEmailPhoneWebsiteForm(FormValidationAction):
         tracker: Tracker,
         domain: DomainDict,
     ) -> Dict[Text, Any]:
-        if is_valid_email(slot_value) is False:
-            dispatcher.utter_message(text="Email sai. Vui lòng nhập lại")
+        if is_valid_email(slot_value) == "UNDELIVERABLE":
+            dispatcher.utter_message(
+                text=f"Em kiểm tra thấy email '{slot_value}' không tồn tại hoặc không thể tương tác. Vui lòng nhập lại")
             return {"user_email": None}
 
         return {"user_email": slot_value}
@@ -259,9 +260,10 @@ class ValidateEmailPhoneWebsiteForm(FormValidationAction):
         tracker: Tracker,
         domain: DomainDict,
     ) -> Dict[Text, Any]:
-        if is_valid_e164(slot_value) is False:
+        valid = is_valid_phone_number(slot_value)
+        if valid is False or valid is None:
             dispatcher.utter_message(
-                text=f"Số điên thoại không hợp lệ. Vui lòng tuân theo định dạng e.164")
+                text=f"Em kiểm tra thấy số điên thoại '{slot_value}' không hợp lệ. Vui lòng nhập lại")
             return {"user_phone": None}
 
         return {"user_phone": slot_value}
@@ -273,12 +275,16 @@ class ValidateEmailPhoneWebsiteForm(FormValidationAction):
         tracker: Tracker,
         domain: DomainDict,
     ) -> Dict[Text, Any]:
-        if is_valid_domain(slot_value) is False:
-            dispatcher.utter_message(
-                text=f"Website không hợp lệ.")
+        valid = is_valid_site(slot_value)
+        if valid == "Site is up.":
+            return {"user_website": slot_value}
+        elif valid == "Unable to reach the URL.":
+            dispatcher.utter_message(text=f"Em kiểm và thấy rằng website '{slot_value}' không tồn tại. Vui lòng nhập lại")
             return {"user_website": None}
-
-        return {"user_website": slot_value}
+        elif valid == "Site is down":
+            dispatcher.utter_message(
+                text=f"Em kiểm và thấy rằng website '{slot_value}' đã bị gỡ hoặc không khả dụng ở thời điểm hiện tại. Vui lòng nhập lại")
+            return {"user_website": None}
 
 
 class ValidateEmailForm(FormValidationAction):
@@ -292,8 +298,9 @@ class ValidateEmailForm(FormValidationAction):
         tracker: Tracker,
         domain: DomainDict,
     ) -> Dict[Text, Any]:
-        if is_valid_email(slot_value) is False:
-            dispatcher.utter_message(text="Email sai. Vui lòng nhập lại")
+        if is_valid_email(slot_value) == "UNDELIVERABLE":
+            dispatcher.utter_message(
+                text=f"Em kiểm tra thấy email '{slot_value}' không tồn tại hoặc không thể tương tác. Vui lòng nhập lại")
             return {"user_email": None}
 
         return {"user_email": slot_value}
@@ -310,8 +317,9 @@ class ValidateEmailPhoneForm(FormValidationAction):
         tracker: Tracker,
         domain: DomainDict,
     ) -> Dict[Text, Any]:
-        if is_valid_email(slot_value) is False:
-            dispatcher.utter_message(text="Email sai. Vui lòng nhập lại")
+        if is_valid_email(slot_value) == "UNDELIVERABLE":
+            dispatcher.utter_message(
+                text=f"Em kiểm tra thấy email '{slot_value}' không tồn tại hoặc không thể tương tác. Vui lòng nhập lại")
             return {"user_email": None}
 
         return {"user_email": slot_value}
@@ -323,9 +331,10 @@ class ValidateEmailPhoneForm(FormValidationAction):
         tracker: Tracker,
         domain: DomainDict,
     ) -> Dict[Text, Any]:
-        if is_valid_e164(slot_value) is False:
+        valid = is_valid_phone_number(slot_value)
+        if valid is False or valid is None:
             dispatcher.utter_message(
-                text=f"Số điên thoại không hợp lệ. Vui lòng tuân theo định dạng e.164")
+                text=f"Em kiểm tra thấy số điên thoại '{slot_value}' không hợp lệ. Vui lòng nhập lại")
             return {"user_phone": None}
 
         return {"user_phone": slot_value}

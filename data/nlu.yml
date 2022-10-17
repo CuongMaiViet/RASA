@@ -96,29 +96,41 @@ nlu:
     - email là [nguyenquangtoan@dqn.vn](user_email)
     - [abc@getfly.vn](user_email)
     - [phanthanhdat1209@gmail.com](user_email)
+    - email của anh là [đateptrai@gmail.com](user_email)
   
 - intent: cung_cấp_số_điện_thoại
   examples: |
     - [84366166535](user_phone)
     - [84377123945](user_phone)
     - số điện thoại là [84377261531](user_phone)
+    - điện thoại của anh là [0901234567](user_phone)
 
 - intent: cung_cấp_địa_chỉ_website
   examples: |
     - [shop.dqn.vn](user_website)
     - [dqnco.com](user_website)
     - [epacific.com.vn](user_website)
+    - [www.dqn.vn](user_website)
 
 - intent: gặp_chuyên_viên_tư_vấn_giải_pháp
   examples: |
     - anh muốn nói chuyện với sales
     - chị muốn nói chuyện với bán hàng
     - anh muốn được tư vấn
-    - chị muốn mua hàng
+    - tớ muốn nói chuyện với bán hàng
+    - chị muốn được tư vấn
+    - Chị muốn mua hàng
     - tư vấn giải pháp
     - gặp chuyên viên
     - nói chuyện với chuyên viên tư vấn
     - gặp tư vấn viên
+    - Anh cần người tương tác trực tiếp
+    - cho anh gặp
+    - anh muốn mua hàng
+    - tư vấn hệ thống tổng đài
+    - nghe trình bày về giải pháp trung tâm liên lạc, contact center
+    - tư vấn tổng đài
+    - anh muốn gặp người tư vấn
 
 - intent: khách_hàng_hiện_hữu
   examples: |
@@ -146,6 +158,8 @@ nlu:
     - chị đang đăng ký làm đại lý của công ty
     - anh muốn tìm hiểu về chương trình đối tác của công ty
     - chị muốn biết thêm về chính sách đại lý của công ty
+    - đại lý
+    - đối tác
 
 - intent: tư_vấn_hệ_thống_trung_tâm_liên_lạc
   examples: |

@@ -29,7 +29,7 @@ intents:
 
 responses:
   utter_tạm_biệt:
-    - text: "Chào tạm biệt {user_title} {user_name}. Hẹn gặp lại {user_title} nha ^^"
+    - text: "Tạm biệt {user_title} nha. Hẹn gặp lại ạ ^^"
 
   utter_tư_vấn_hệ_thống_trung_tâm_liên_lạc:
     - text: "Cho doanh nghiệp của {user_title} hay cho khách hàng của {user_title} ạ?"
