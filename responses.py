@@ -108,7 +108,7 @@ class Responses:
 
             dispatcher.utter_message(json_message=bot_response)
             if type == "cards":
-                dispatcher.utter_message(text=f"Mai rất sẵn lòng trả lời nếu {self.title} muốn biết thêm điều gì khác ^^")
+                dispatcher.utter_message(text=f"Mai rất sẵn lòng trả lời nếu {self.title} muốn biết thêm điều gì khác ^^. Và vui lòng nói cho em nghe luôn ý muốn của {self.title}")
         else:
             dispatcher.utter_message(text=f"Lỗi định dạng ({type(bot_response)})")
     

@@ -79,7 +79,7 @@ class Channels:
                      "value": '/tư_vấn_hệ_thống_trung_tâm_liên_lạc_cho_doanh_nghiệp'},
                     {"title": f"{capTitle} đang cần tư vấn một hệ thống trung tâm liên lạc cho khách hàng của công ty {title}",
                      "value": '/tư_vấn_hệ_thống_trung_tâm_liên_lạc_cho_khách_hàng'},
-                    {"title": f"{capTitle} đang đánh giá các sản phẩm khác của ePacific (ví dụ như là tổng đài CCALL, softphone, AI, v.v.)",
+                    {"title": f"{capTitle} đang đánh giá các sản phẩm khác của ePacific",
                      "value": '/đánh_giá_các_sản_phẩm_khác_của_ePacific'}
                 ]
             },
@@ -91,7 +91,7 @@ class Channels:
                      "value": '/tư_vấn_hệ_thống_trung_tâm_liên_lạc_cho_doanh_nghiệp'},
                     {"title": f"{capTitle} đang cần tư vấn một hệ thống trung tâm liên lạc cho khách hàng của công ty {title}",
                      "value": '/tư_vấn_hệ_thống_trung_tâm_liên_lạc_cho_khách_hàng'},
-                    {"title": f"{capTitle} đang đánh giá các sản phẩm khác của ePacific (ví dụ như là tổng đài CCALL, softphone, AI, v.v.)",
+                    {"title": f"{capTitle} đang đánh giá các sản phẩm khác của ePacific",
                      "value": '/đánh_giá_các_sản_phẩm_khác_của_ePacific'}
                 ]
             },
