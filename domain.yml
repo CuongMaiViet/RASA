@@ -1,18 +1,37 @@
 version: "3.1"
 
 intents:
-  - chào_mừng
-  - tạm_biệt
-  - channel
+  - chào_mừng:
+      ignore_entities:
+        - user_name
+  - tạm_biệt:
+      ignore_entities:
+        - user_name
+  - channel:
+      use_entities:
+        - channel
+  - cần_hỏi_gì_đó:
+      ignore_entities:
+        - user_name
   - xem_menu
-  - cần_hỏi_gì_đó
   - không_muốn_biết_thêm_điều_gì_khác
   # INFORMATION
-  - cung_cấp_giới_tính
-  - cung_cấp_tên
-  - cung_cấp_email
-  - cung_cấp_số_điện_thoại
-  - cung_cấp_địa_chỉ_website
+  - cung_cấp_giới_tính:
+      use_entities:
+        - user_title
+  - cung_cấp_tên:
+      use_entities:
+        - user_name
+        - user_title
+  - cung_cấp_email:
+      use_entities:
+        - user_email
+  - cung_cấp_số_điện_thoại:
+      use_entities:
+        - user_phone
+  - cung_cấp_địa_chỉ_website:
+      use_entities:
+        - user_website
   # LVL0
   - gặp_chuyên_viên_tư_vấn_giải_pháp
   - khách_hàng_hiện_hữu
@@ -56,10 +75,10 @@ responses:
     - text: "Cho em xin tên của quý khách đi ạ"
   
   utter_ask_user_title:
-    - text: "Quý khách là nam hay nữ ạ?"
-    - text: "Xin hỏi vị khách quý đây là nam hay nữ vậy ạ?"
-    - text: "Xin hỏi quý khách đây là nam hay nữ vậy ạ?"
-    - text: "Mai muốn biết quý khách đây là nữ hay là nam vậy ạ?"
+    - text: "Quý khách là nam hay nữ ạ? (nam/nữ)"
+    - text: "Xin hỏi vị khách quý đây là nam hay nữ vậy ạ? (nam/nữ)"
+    - text: "Xin hỏi quý khách đây là nam hay nữ vậy ạ? (nam/nữ)"
+    - text: "Mai muốn biết quý khách đây là nữ hay là nam vậy ạ? (nam/nữ)"
 
   utter_ask_user_email:
     - text: "Cho em xin email của {user_title} đi ạ"
@@ -102,6 +121,7 @@ slots:
     mappings:
       - type: from_entity
         entity: channel
+        intent: channel
 
   user_title:
     type: text
@@ -116,6 +136,7 @@ slots:
     mappings:
       - type: from_entity
         entity: user_name
+        intent: cung_cấp_tên
 
   user_email:
     type: text
@@ -123,6 +144,7 @@ slots:
     mappings:
       - type: from_entity
         entity: user_email
+        intent: cung_cấp_email
 
   user_phone:
     type: text
@@ -130,6 +152,7 @@ slots:
     mappings:
       - type: from_entity
         entity: user_phone
+        intent: cung_cấp_số_điện_thoại
 
   user_website:
     type: text
@@ -137,6 +160,7 @@ slots:
     mappings:
       - type: from_entity
         entity: user_website
+        intent: cung_cấp_địa_chỉ_website
 
 forms:
   user_information_form:

@@ -50,7 +50,8 @@ def check_agent_availability(url, token):
 def check_name(name):
     capitalized_name = capAll(name)
     data = read_json("name.json")
-    return next((val for val in data if capitalized_name in val['full_name']), None)
+    # next((val for val in data if capitalized_name in val['full_name']), None)
+    return next((val for val in data if capitalized_name in val['first_name']), None)
 
 
 def is_valid_email(email):
@@ -109,6 +110,6 @@ def is_alphabet(str):
         return False
 
 
-print(is_valid_phone_number('0366166535'))
+print(check_name("Nam"))
 
 
