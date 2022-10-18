@@ -85,7 +85,7 @@ def is_valid_phone_number(input):
     r = requests.get(url=URL)
 
     data = r.json()
-    return data.get("valid")
+    return data
 
 
 def is_valid_site(url):
@@ -109,6 +109,6 @@ def is_alphabet(str):
         return False
 
 
-print(is_valid_email('abc@gmail.com'))
+print(is_valid_phone_number('0366166535'))
 
 

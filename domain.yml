@@ -5,7 +5,8 @@ intents:
   - tạm_biệt
   - channel
   - xem_menu
-  - hỏi_gì_đó
+  - cần_hỏi_gì_đó
+  - không_muốn_biết_thêm_điều_gì_khác
   # INFORMATION
   - cung_cấp_giới_tính
   - cung_cấp_tên
@@ -48,10 +49,11 @@ responses:
     - text: "Mai xin lỗi, Mai không hiểu được ý của {user_title}. Diễn đạt lại giúp Mai nha"
 
   utter_ask_user_name:
-    - text: "Em có thể biết tên của {user_title} được không ạ?"
-    - text: "Vui lòng cho em biết tên của {user_title} ạ"
-    - text: "Tên của {user_title} là gì vậy ạ?"
-    - text: "Cho Mai xin tên của {user_title} đi ạ"
+    - text: "Em có thể biết tên của quý khách được không ạ?"
+    - text: "Vui lòng cho em biết tên của quý khách ạ"
+    - text: "Tên của quý khách là gì vậy ạ?"
+    - text: "Cho Mai xin tên của quý khách đi ạ"
+    - text: "Cho em xin tên của quý khách đi ạ"
   
   utter_ask_user_title:
     - text: "Quý khách là nam hay nữ ạ?"
@@ -139,8 +141,8 @@ slots:
 forms:
   user_information_form:
     required_slots:
-      - user_title
       - user_name
+      - user_title
 
   email_phone_website_form:
     required_slots:

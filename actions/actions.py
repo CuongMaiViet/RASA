@@ -8,8 +8,8 @@ from responses import Responses
 from User import User
 from functions import check_agent_availability, check_name, is_alphabet, is_valid_site, is_valid_phone_number, is_valid_email, read_json
 
-MALE = ["nam", "male", "anh"]
-FEMALE = ["nữ", "female", "chị"]
+MALE = ["nam", "male", "anh", "chú", "chu"]
+FEMALE = ["nữ", "female", "chị", "cô", "chi", "co"]
 LEGAL_CHANNELS = ["ChannelWebWidget", "ChannelApi", "ChannelTelegram"]
 
 URL = "https://ccai.epacific.net/api/v1/accounts/1"
@@ -55,8 +55,6 @@ class ActionGreet(Action):
         user_phone = tracker.get_slot("user_phone")
         user_website = tracker.get_slot("user_website")
 
-        emoji = read_json("emojis.json")
-
         if intent == "xử_lý_đơn_hàng" or intent == "xử_lý_hóa_đơn" or intent == "hỗ_trợ_kỹ_thuật_sử_dụng":
             if user_email is not None and user_phone is not None:
                 return
@@ -93,11 +91,7 @@ class ActionGreet(Action):
             dispatcher.utter_message(
                 text=f"Vâng chắc chắn rồi ạ")
             dispatcher.utter_message(
-                text=f"Nhưng mà {user_title}, em bảo cái này tí")
-            dispatcher.utter_message(
-                text=f"Sếp bảo em phải có email của khách thì mới được chuyển tiếp cho chuyên viên tư vấn á {emoji.get('pensive_face')}")
-            dispatcher.utter_message(
-                text=f"Nên {user_title} à {emoji.get('pleading_face')}")
+                text=f"Nhưng mà để tiện liên lạc, {user_title} vui lòng cho em biết một số thông tin sau")
             return
 
         return
@@ -200,14 +194,14 @@ class ValidateUserInformationForm(FormValidationAction):
         gender = slot_value.lower()
         if gender not in MALE and gender not in FEMALE:
             dispatcher.utter_message(
-                text="Giới tính này không đúng. Quý khách vui lòng cung cấp đúng giới tính")
+                text="Giới tính không đúng. Vui lòng nhập giới tính hợp lệ (nam/nữ)")
             return {"user_title": None}
 
         title = "anh"
         if gender in FEMALE:
             title = "chị"
 
-        # dispatcher.utter_message(text=f"Cảm ơn {title}, em sẽ ghi nhớ")
+        dispatcher.utter_message(text=f"Cập nhật thông tin - Giới tính: {'nam' if title == 'anh' else 'nữ'}")
         return {"user_title": title}
 
     async def validate_user_name(
@@ -217,7 +211,7 @@ class ValidateUserInformationForm(FormValidationAction):
         tracker: Tracker,
         domain: DomainDict,
     ) -> Dict[Text, Any]:
-        user_title = tracker.get_slot("user_title")
+        user_title = tracker.get_slot("user_title") or "quý khách"
 
         valid = is_alphabet(slot_value)
         if not valid:
@@ -231,8 +225,9 @@ class ValidateUserInformationForm(FormValidationAction):
                 text=f"Em tìm trong từ điển không thấy tên của {user_title}. Vui lòng cung cấp lại")
             return {"user_name": None}
 
-        # dispatcher.utter_message(text=f"Dạ vâng, em chào {user_title} {slot_value}")
-        return {"user_name": checked_name.get("first_name")}
+        first_name = checked_name.get("first_name")
+        dispatcher.utter_message(text=f"Cập nhật thông tin - Tên: {first_name}")
+        return {"user_name": first_name}
 
 
 class ValidateEmailPhoneWebsiteForm(FormValidationAction):
@@ -248,9 +243,10 @@ class ValidateEmailPhoneWebsiteForm(FormValidationAction):
     ) -> Dict[Text, Any]:
         if is_valid_email(slot_value) == "UNDELIVERABLE":
             dispatcher.utter_message(
-                text=f"Em kiểm tra thấy email '{slot_value}' không tồn tại hoặc không thể tương tác. Vui lòng nhập lại")
+                text=f"Em kiểm tra thấy email <{slot_value}> không tồn tại hoặc không thể tương tác. Vui lòng nhập lại")
             return {"user_email": None}
 
+        dispatcher.utter_message(text=f"Cập nhật thông tin - Email: {slot_value}")
         return {"user_email": slot_value}
 
     async def validate_user_phone(
@@ -260,12 +256,15 @@ class ValidateEmailPhoneWebsiteForm(FormValidationAction):
         tracker: Tracker,
         domain: DomainDict,
     ) -> Dict[Text, Any]:
-        valid = is_valid_phone_number(slot_value)
+        phone_data = is_valid_phone_number(slot_value)
+        valid = phone_data.get("valid")
+        international_phone_number = phone_data.get("format").get("international")
         if valid is False or valid is None:
             dispatcher.utter_message(
-                text=f"Em kiểm tra thấy số điên thoại '{slot_value}' không hợp lệ. Vui lòng nhập lại")
+                text=f"Em kiểm tra thấy số điên thoại <{slot_value}> không hợp lệ. Vui lòng nhập lại")
             return {"user_phone": None}
 
+        dispatcher.utter_message(text=f"Cập nhật thông tin - SDT: {international_phone_number}")
         return {"user_phone": slot_value}
 
     async def validate_user_website(
@@ -277,13 +276,15 @@ class ValidateEmailPhoneWebsiteForm(FormValidationAction):
     ) -> Dict[Text, Any]:
         valid = is_valid_site(slot_value)
         if valid == "Site is up.":
+            dispatcher.utter_message(text=f"Cập nhật thông tin - Site: {slot_value}")
             return {"user_website": slot_value}
         elif valid == "Unable to reach the URL.":
-            dispatcher.utter_message(text=f"Em kiểm và thấy rằng website '{slot_value}' không tồn tại. Vui lòng nhập lại")
+            dispatcher.utter_message(
+                text=f"Em kiểm và thấy rằng website <{slot_value}> không tồn tại. Vui lòng nhập lại")
             return {"user_website": None}
         elif valid == "Site is down":
             dispatcher.utter_message(
-                text=f"Em kiểm và thấy rằng website '{slot_value}' đã bị gỡ hoặc không khả dụng ở thời điểm hiện tại. Vui lòng nhập lại")
+                text=f"Em kiểm và thấy rằng website <{slot_value}> đã bị gỡ hoặc không khả dụng ở thời điểm hiện tại. Vui lòng nhập lại")
             return {"user_website": None}
 
 
@@ -300,9 +301,10 @@ class ValidateEmailForm(FormValidationAction):
     ) -> Dict[Text, Any]:
         if is_valid_email(slot_value) == "UNDELIVERABLE":
             dispatcher.utter_message(
-                text=f"Em kiểm tra thấy email '{slot_value}' không tồn tại hoặc không thể tương tác. Vui lòng nhập lại")
+                text=f"Em kiểm tra thấy email <{slot_value}> không tồn tại hoặc không thể tương tác. Vui lòng nhập lại")
             return {"user_email": None}
 
+        dispatcher.utter_message(text=f"Cập nhật thông tin - Email: {slot_value}")
         return {"user_email": slot_value}
 
 
@@ -319,9 +321,10 @@ class ValidateEmailPhoneForm(FormValidationAction):
     ) -> Dict[Text, Any]:
         if is_valid_email(slot_value) == "UNDELIVERABLE":
             dispatcher.utter_message(
-                text=f"Em kiểm tra thấy email '{slot_value}' không tồn tại hoặc không thể tương tác. Vui lòng nhập lại")
+                text=f"Em kiểm tra thấy email <{slot_value}> không tồn tại hoặc không thể tương tác. Vui lòng nhập lại")
             return {"user_email": None}
 
+        dispatcher.utter_message(text=f"Cập nhật thông tin - Email: {slot_value}")
         return {"user_email": slot_value}
 
     async def validate_user_phone(
@@ -331,10 +334,13 @@ class ValidateEmailPhoneForm(FormValidationAction):
         tracker: Tracker,
         domain: DomainDict,
     ) -> Dict[Text, Any]:
-        valid = is_valid_phone_number(slot_value)
+        phone_data = is_valid_phone_number(slot_value)
+        valid = phone_data.get("valid")
+        international_phone_number = phone_data.get("format").get("international")
         if valid is False or valid is None:
             dispatcher.utter_message(
-                text=f"Em kiểm tra thấy số điên thoại '{slot_value}' không hợp lệ. Vui lòng nhập lại")
+                text=f"Em kiểm tra thấy số điên thoại <{slot_value}> không hợp lệ. Vui lòng nhập lại")
             return {"user_phone": None}
 
+        dispatcher.utter_message(text=f"Cập nhật thông tin - SDT: {international_phone_number}")
         return {"user_phone": slot_value}

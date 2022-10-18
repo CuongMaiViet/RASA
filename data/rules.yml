@@ -26,9 +26,9 @@ rules:
   - action: utter_ask_rephrase
   
 # Hỏi gì đó  
-- rule: hỏi_gì_đó
+- rule: cần_hỏi_gì_đó
   steps:
-  - intent: hỏi_gì_đó
+  - intent: cần_hỏi_gì_đó
   - action: utter_em_nghe_nè
 
 # Gặp chuyên viên tư vấn giải pháp

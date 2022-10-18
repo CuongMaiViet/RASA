@@ -11,3 +11,8 @@ stories:
   steps:
   - intent: tạm_biệt
   - action: utter_tạm_biệt
+
+- story: không_muốn_biết_thêm_điều_gì_khác
+  steps:
+  - intent: không_muốn_biết_thêm_điều_gì_khác
+  - action: utter_tạm_biệt
