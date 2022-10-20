@@ -1146,21 +1146,23 @@ nlu:
   examples: |
     - anh muốn nói chuyện với sales
     - chị muốn nói chuyện với bán hàng
-    - anh muốn được tư vấn
     - tớ muốn nói chuyện với bán hàng
-    - chị muốn được tư vấn
     - Chị muốn mua hàng
     - tư vấn giải pháp
     - gặp chuyên viên
     - nói chuyện với chuyên viên tư vấn
     - gặp tư vấn viên
     - Anh cần người tương tác trực tiếp
-    - cho anh gặp
+    - cho anh gặp chuyên viên tư vấn
     - anh muốn mua hàng
     - tư vấn hệ thống tổng đài
     - nghe trình bày về giải pháp trung tâm liên lạc, contact center
     - tư vấn tổng đài
     - anh muốn gặp người tư vấn
+    - tư vấn
+    - anh muốn được tư vấn
+    - chị muốn được tư vấn
+    - chú cần được tư vấn
 
 - intent: khách_hàng_hiện_hữu
   examples: |
@@ -1201,6 +1203,7 @@ nlu:
     - tư vấn hệ thống
     - tư vấn trung tâm liên lạc
     - hệ thống trung tâm liên lạc
+    - trung tâm liên lạc
 
 - intent: tư_vấn_hệ_thống_trung_tâm_liên_lạc_cho_doanh_nghiệp
   examples: |
@@ -1211,6 +1214,9 @@ nlu:
     - cho doanh nghiệp của anh
     - cho anh
     - cho chị
+    - cho mình
+    - anh cần một trung tâm liên lạc cho mình
+    - trung tâm liên lạc cho mình
 
 - intent: tư_vấn_hệ_thống_trung_tâm_liên_lạc_cho_khách_hàng
   examples: |
@@ -1220,7 +1226,9 @@ nlu:
     - em có triển khai trung tâm liên lạc nào tốt cho khách hàng của anh được không
     - cho khách hàng
     - cho khách của chị
+    - cho khách của mình
     - cho khách anh
+    - cho khách mình
 
 - intent: đánh_giá_các_sản_phẩm_khác_của_ePacific
   examples: |

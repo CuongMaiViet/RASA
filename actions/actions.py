@@ -6,7 +6,7 @@ from rasa_sdk.types import DomainDict
 
 from responses import Responses
 from User import User
-from functions import check_agent_availability, check_name, is_alphabet, is_valid_site, is_valid_phone_number, is_valid_email, read_json
+from functions import check_agent_availability, check_name, is_alphabet, is_valid_site, is_valid_phone_number, is_valid_email, read_json, search_eTouch_contact
 
 MALE = ["nam", "male", "anh", "chú", "chu"]
 FEMALE = ["nữ", "female", "chị", "cô", "chi", "co"]
@@ -141,7 +141,7 @@ class ActionHandoff(Action):
     async def run(self, dispatcher: CollectingDispatcher,
                   tracker: Tracker,
                   domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        is_agent_available = check_agent_availability(f"{URL}/agents", TOKEN)
+        is_agent_available = check_agent_availability(URL, TOKEN)
         intent = tracker.latest_message["intent"]["name"]
 
         user = User(tracker)
@@ -201,7 +201,8 @@ class ValidateUserInformationForm(FormValidationAction):
         if gender in FEMALE:
             title = "chị"
 
-        dispatcher.utter_message(text=f"Cập nhật thông tin - Giới tính: {'nam' if title == 'anh' else 'nữ'}")
+        dispatcher.utter_message(
+            text=f"Cập nhật thông tin - Giới tính: {'nam' if title == 'anh' else 'nữ'}")
         return {"user_title": title}
 
     async def validate_user_name(
@@ -226,7 +227,8 @@ class ValidateUserInformationForm(FormValidationAction):
             return {"user_name": None}
 
         first_name = checked_name.get("first_name")
-        dispatcher.utter_message(text=f"Cập nhật thông tin - Tên: {first_name}")
+        dispatcher.utter_message(
+            text=f"Cập nhật thông tin - Tên: {first_name}")
         return {"user_name": first_name}
 
 
@@ -241,12 +243,21 @@ class ValidateEmailPhoneWebsiteForm(FormValidationAction):
         tracker: Tracker,
         domain: DomainDict,
     ) -> Dict[Text, Any]:
-        if is_valid_email(slot_value) == "UNDELIVERABLE":
+        valid = is_valid_email(slot_value)
+        if valid == "UNDELIVERABLE" or valid == False:
             dispatcher.utter_message(
                 text=f"Em kiểm tra thấy email <{slot_value}> không tồn tại hoặc không thể tương tác. Vui lòng nhập lại")
             return {"user_email": None}
 
-        dispatcher.utter_message(text=f"Cập nhật thông tin - Email: {slot_value}")
+        if search_eTouch_contact(search_string=slot_value, url=URL, token=TOKEN) is not None:
+            dispatcher.utter_message(
+                text=f"Em kiểm tra trong hệ thống eTouch thấy email <{slot_value}> đã tồn tại")
+            dispatcher.utter_message(
+                text="Mỗi email là duy nhất với từng khách hàng. Vui lòng nhập lại")
+            return {"user_email": None}
+
+        dispatcher.utter_message(
+            text=f"Cập nhật thông tin - Email: {slot_value}")
         return {"user_email": slot_value}
 
     async def validate_user_phone(
@@ -258,13 +269,22 @@ class ValidateEmailPhoneWebsiteForm(FormValidationAction):
     ) -> Dict[Text, Any]:
         phone_data = is_valid_phone_number(slot_value)
         valid = phone_data.get("valid")
-        international_phone_number = phone_data.get("format").get("international")
+        international_phone_number = phone_data.get(
+            "format").get("international")
         if valid is False or valid is None:
             dispatcher.utter_message(
                 text=f"Em kiểm tra thấy số điên thoại <{slot_value}> không hợp lệ. Vui lòng nhập lại")
             return {"user_phone": None}
 
-        dispatcher.utter_message(text=f"Cập nhật thông tin - SDT: {international_phone_number}")
+        if search_eTouch_contact(search_string=slot_value, url=URL, token=TOKEN) is not None:
+            dispatcher.utter_message(
+                text=f"Em kiểm tra trong hệ thống eTouch thấy số điện thoại <{slot_value}> đã tồn tại")
+            dispatcher.utter_message(
+                text="Mỗi số điện thoại là duy nhất với từng khách hàng. Vui lòng nhập lại")
+            return {"user_phone": None}
+
+        dispatcher.utter_message(
+            text=f"Cập nhật thông tin - SDT: {international_phone_number}")
         return {"user_phone": slot_value}
 
     async def validate_user_website(
@@ -276,7 +296,8 @@ class ValidateEmailPhoneWebsiteForm(FormValidationAction):
     ) -> Dict[Text, Any]:
         valid = is_valid_site(slot_value)
         if valid == "Site is up.":
-            dispatcher.utter_message(text=f"Cập nhật thông tin - Site: {slot_value}")
+            dispatcher.utter_message(
+                text=f"Cập nhật thông tin - Site: {slot_value}")
             return {"user_website": slot_value}
         elif valid == "Unable to reach the URL.":
             dispatcher.utter_message(
@@ -299,12 +320,21 @@ class ValidateEmailForm(FormValidationAction):
         tracker: Tracker,
         domain: DomainDict,
     ) -> Dict[Text, Any]:
-        if is_valid_email(slot_value) == "UNDELIVERABLE":
+        valid = is_valid_email(slot_value)
+        if valid == "UNDELIVERABLE" or valid == False:
             dispatcher.utter_message(
                 text=f"Em kiểm tra thấy email <{slot_value}> không tồn tại hoặc không thể tương tác. Vui lòng nhập lại")
             return {"user_email": None}
 
-        dispatcher.utter_message(text=f"Cập nhật thông tin - Email: {slot_value}")
+        if search_eTouch_contact(search_string=slot_value, url=URL, token=TOKEN) is not None:
+            dispatcher.utter_message(
+                text=f"Em kiểm tra trong hệ thống eTouch thấy email <{slot_value}> đã tồn tại")
+            dispatcher.utter_message(
+                text="Mỗi email là duy nhất với từng khách hàng. Vui lòng nhập lại")
+            return {"user_email": None}
+
+        dispatcher.utter_message(
+            text=f"Cập nhật thông tin - Email: {slot_value}")
         return {"user_email": slot_value}
 
 
@@ -319,12 +349,21 @@ class ValidateEmailPhoneForm(FormValidationAction):
         tracker: Tracker,
         domain: DomainDict,
     ) -> Dict[Text, Any]:
-        if is_valid_email(slot_value) == "UNDELIVERABLE":
+        valid = is_valid_email(slot_value)
+        if valid == "UNDELIVERABLE" or valid == False:
             dispatcher.utter_message(
                 text=f"Em kiểm tra thấy email <{slot_value}> không tồn tại hoặc không thể tương tác. Vui lòng nhập lại")
             return {"user_email": None}
 
-        dispatcher.utter_message(text=f"Cập nhật thông tin - Email: {slot_value}")
+        if search_eTouch_contact(search_string=slot_value, url=URL, token=TOKEN) is not None:
+            dispatcher.utter_message(
+                text=f"Em kiểm tra trong hệ thống eTouch thấy email <{slot_value}> đã tồn tại")
+            dispatcher.utter_message(
+                text="Mỗi email là duy nhất với từng khách hàng. Vui lòng nhập lại")
+            return {"user_email": None}
+
+        dispatcher.utter_message(
+            text=f"Cập nhật thông tin - Email: {slot_value}")
         return {"user_email": slot_value}
 
     async def validate_user_phone(
@@ -336,11 +375,20 @@ class ValidateEmailPhoneForm(FormValidationAction):
     ) -> Dict[Text, Any]:
         phone_data = is_valid_phone_number(slot_value)
         valid = phone_data.get("valid")
-        international_phone_number = phone_data.get("format").get("international")
+        international_phone_number = phone_data.get(
+            "format").get("international")
         if valid is False or valid is None:
             dispatcher.utter_message(
                 text=f"Em kiểm tra thấy số điên thoại <{slot_value}> không hợp lệ. Vui lòng nhập lại")
             return {"user_phone": None}
 
-        dispatcher.utter_message(text=f"Cập nhật thông tin - SDT: {international_phone_number}")
+        if search_eTouch_contact(search_string=slot_value, url=URL, token=TOKEN) is not None:
+            dispatcher.utter_message(
+                text=f"Em kiểm tra trong hệ thống eTouch thấy số điện thoại <{slot_value}> đã tồn tại")
+            dispatcher.utter_message(
+                text="Mỗi số điện thoại là duy nhất với từng khách hàng. Vui lòng nhập lại")
+            return {"user_phone": None}
+
+        dispatcher.utter_message(
+            text=f"Cập nhật thông tin - SDT: {international_phone_number}")
         return {"user_phone": slot_value}

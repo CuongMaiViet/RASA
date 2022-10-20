@@ -84,7 +84,7 @@ responses:
     - text: "Cho em xin email của {user_title} đi ạ"
     - text: "Cho Mai xin email của {user_title} đi ạ"
     - text: "Email của {user_title} là gì vậy ạ?"
-    - text: "Vui lòng {user_title} cho Mai xin email"
+    - text: "{user_title} vui lòng cho Mai xin email"
 
   utter_ask_user_phone:
     - text: "Cho Mai xin số điện thoại của {user_title} đi ạ"
