@@ -1175,6 +1175,10 @@ nlu:
     - đang là khách hàng
     - đã là khách hàng
     - từng là khách hàng
+    - anh đang là khách hàng
+    - chị đang là khách hàng của em
+    - anh đang sử dụng dịch vụ bên em
+    - chị là khách hàng của epacific
 
 - intent: tìm_kiếm_thông_tin
   examples: |
@@ -1185,6 +1189,7 @@ nlu:
     - các giải pháp cải thiện trải nghiệm
     - tìm kiếm thông tin
     - tìm hiểu thông tin
+    - anh đang xem các sản phẩm trên web
     
 - intent: đăng_ký_làm_đại_lý
   examples: |
@@ -1194,6 +1199,7 @@ nlu:
     - chị muốn biết thêm về chính sách đại lý của công ty
     - đại lý
     - đối tác
+    - anh muốn làm đại lý bên em
 
 - intent: tư_vấn_hệ_thống_trung_tâm_liên_lạc
   examples: |
@@ -1204,6 +1210,7 @@ nlu:
     - tư vấn trung tâm liên lạc
     - hệ thống trung tâm liên lạc
     - trung tâm liên lạc
+    - tư vấn về hệ thống
 
 - intent: tư_vấn_hệ_thống_trung_tâm_liên_lạc_cho_doanh_nghiệp
   examples: |
@@ -1217,6 +1224,8 @@ nlu:
     - cho mình
     - anh cần một trung tâm liên lạc cho mình
     - trung tâm liên lạc cho mình
+    - anh đang cần một hệ thống cho nhân viên của anh
+    - hệ thống cho công ty bên anh
 
 - intent: tư_vấn_hệ_thống_trung_tâm_liên_lạc_cho_khách_hàng
   examples: |
@@ -1235,6 +1244,7 @@ nlu:
     - đánh giá các sản phẩm khác của ePacific
     - anh đang coi các sản phẩm khác của công ty em
     - chị đang xem những sản phẩm khác của epacific
+    - anh đang đánh giá các sản phẩm khác của ePacific
 
 - intent: hỗ_trợ_kỹ_thuật_sử_dụng
   examples: |
@@ -1249,6 +1259,8 @@ nlu:
     - xử lý đơn hàng hóa đơn
     - anh có đơn hàng hóa đơn cần xử lý
     - chị có đơn hàng hóa đơn cần xử lý
+    - anh muốn hỏi về bảo hành
+    - bảo hành như thế nào em
 
 - intent: xử_lý_đơn_hàng
   examples: |
