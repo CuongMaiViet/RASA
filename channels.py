@@ -75,7 +75,7 @@ class Channels:
                 "message": utter.gặp_chuyên_viên_tư_vấn_giải_pháp(),
                 "message_type": "full_of_text",
                 "payload": [
-                    {"title": f"{capTitle} đang cần tư vấn một hệ thống Trung tâm liên lạc cho doanh nghiệp của mình",
+                    {"title": f"{capTitle} đang cần tư vấn một hệ thống trung tâm liên lạc cho doanh nghiệp của mình",
                      "value": '/tư_vấn_hệ_thống_trung_tâm_liên_lạc_cho_doanh_nghiệp'},
                     {"title": f"{capTitle} đang cần tư vấn một hệ thống trung tâm liên lạc cho khách hàng của công ty {title}",
                      "value": '/tư_vấn_hệ_thống_trung_tâm_liên_lạc_cho_khách_hàng'},
@@ -87,7 +87,7 @@ class Channels:
                 "message": utter.gặp_chuyên_viên_tư_vấn_giải_pháp(),
                 "message_type": "full_of_text",
                 "payload": [
-                    {"title": f"{capTitle} đang cần tư vấn một hệ thống Trung tâm liên lạc cho doanh nghiệp của mình",
+                    {"title": f"{capTitle} đang cần tư vấn một hệ thống trung tâm liên lạc cho doanh nghiệp của mình",
                      "value": '/tư_vấn_hệ_thống_trung_tâm_liên_lạc_cho_doanh_nghiệp'},
                     {"title": f"{capTitle} đang cần tư vấn một hệ thống trung tâm liên lạc cho khách hàng của công ty {title}",
                      "value": '/tư_vấn_hệ_thống_trung_tâm_liên_lạc_cho_khách_hàng'},

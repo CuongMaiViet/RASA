@@ -243,18 +243,24 @@ class ValidateEmailPhoneWebsiteForm(FormValidationAction):
         tracker: Tracker,
         domain: DomainDict,
     ) -> Dict[Text, Any]:
+        user = User(tracker)
+        user_title = user.get_title()
+
         valid = is_valid_email(slot_value)
         if valid == "UNDELIVERABLE" or valid == False:
             dispatcher.utter_message(
                 text=f"Em kiểm tra thấy email <{slot_value}> không tồn tại hoặc không thể tương tác. Vui lòng nhập lại")
             return {"user_email": None}
-
-        if search_eTouch_contact(search_string=slot_value, url=URL, token=TOKEN) is not None:
+        
+        existed_contact = search_eTouch_contact(search_string=slot_value, url=URL, token=TOKEN)
+        if existed_contact is not None:
             dispatcher.utter_message(
-                text=f"Em kiểm tra trong hệ thống eTouch thấy email <{slot_value}> đã tồn tại")
+                text=f"À, em kiểm tra trong hệ thống thấy {user_title} đã từng là khách hàng bên em")
             dispatcher.utter_message(
-                text="Mỗi email là duy nhất với từng khách hàng. Vui lòng nhập lại")
-            return {"user_email": None}
+                text=f"Vui lòng đợi em đồng bộ thông tin của {user_title} nha")
+            dispatcher.utter_message(
+                text=f"Đồng bộ thông tin - EID: {existed_contact}")
+            return {"user_email": slot_value}
 
         dispatcher.utter_message(
             text=f"Cập nhật thông tin - Email: {slot_value}")
@@ -320,18 +326,24 @@ class ValidateEmailForm(FormValidationAction):
         tracker: Tracker,
         domain: DomainDict,
     ) -> Dict[Text, Any]:
+        user = User(tracker)
+        user_title = user.get_title()
+
         valid = is_valid_email(slot_value)
         if valid == "UNDELIVERABLE" or valid == False:
             dispatcher.utter_message(
                 text=f"Em kiểm tra thấy email <{slot_value}> không tồn tại hoặc không thể tương tác. Vui lòng nhập lại")
             return {"user_email": None}
-
-        if search_eTouch_contact(search_string=slot_value, url=URL, token=TOKEN) is not None:
+        
+        existed_contact = search_eTouch_contact(search_string=slot_value, url=URL, token=TOKEN)
+        if existed_contact is not None:
             dispatcher.utter_message(
-                text=f"Em kiểm tra trong hệ thống eTouch thấy email <{slot_value}> đã tồn tại")
+                text=f"À, em kiểm tra trong hệ thống thấy {user_title} đã từng là khách hàng bên em")
             dispatcher.utter_message(
-                text="Mỗi email là duy nhất với từng khách hàng. Vui lòng nhập lại")
-            return {"user_email": None}
+                text=f"Vui lòng đợi em đồng bộ thông tin của {user_title} nha")
+            dispatcher.utter_message(
+                text=f"Đồng bộ thông tin - EID: {existed_contact}")
+            return {"user_email": slot_value}
 
         dispatcher.utter_message(
             text=f"Cập nhật thông tin - Email: {slot_value}")
@@ -349,18 +361,24 @@ class ValidateEmailPhoneForm(FormValidationAction):
         tracker: Tracker,
         domain: DomainDict,
     ) -> Dict[Text, Any]:
+        user = User(tracker)
+        user_title = user.get_title()
+
         valid = is_valid_email(slot_value)
         if valid == "UNDELIVERABLE" or valid == False:
             dispatcher.utter_message(
                 text=f"Em kiểm tra thấy email <{slot_value}> không tồn tại hoặc không thể tương tác. Vui lòng nhập lại")
             return {"user_email": None}
-
-        if search_eTouch_contact(search_string=slot_value, url=URL, token=TOKEN) is not None:
+        
+        existed_contact = search_eTouch_contact(search_string=slot_value, url=URL, token=TOKEN)
+        if existed_contact is not None:
             dispatcher.utter_message(
-                text=f"Em kiểm tra trong hệ thống eTouch thấy email <{slot_value}> đã tồn tại")
+                text=f"À, em kiểm tra trong hệ thống thấy {user_title} đã từng là khách hàng bên em")
             dispatcher.utter_message(
-                text="Mỗi email là duy nhất với từng khách hàng. Vui lòng nhập lại")
-            return {"user_email": None}
+                text=f"Vui lòng đợi em đồng bộ thông tin của {user_title} nha")
+            dispatcher.utter_message(
+                text=f"Đồng bộ thông tin - EID: {existed_contact}")
+            return {"user_email": slot_value}
 
         dispatcher.utter_message(
             text=f"Cập nhật thông tin - Email: {slot_value}")

@@ -50,7 +50,7 @@ def check_name(name):
     capitalized_name = capAll(name)
     data = read_json("name.json")
     # next((val for val in data if capitalized_name in val['full_name']), None)
-    return next((val for val in data if capitalized_name in val['first_name']), None)
+    return next((val for val in data if capitalized_name == val['first_name']), None)
 
 
 def is_valid_email(email):
@@ -76,7 +76,7 @@ def is_valid_email(email):
         EMAILABLE_API_KEY = "live_de390a30809439e05847"
         EMAILABLE_API = f"https://api.emailable.com/v1/verify?email={email}&api_key={EMAILABLE_API_KEY}"
         r = requests.get(url=EMAILABLE_API)
-        
+
     data = r.json()
     if data.get("deliverability") != None:
         return data.get("deliverability") == "DELIVERABLE"
@@ -137,7 +137,10 @@ def search_eTouch_contact(search_string, url, token, include_contact_inboxes=Fal
     data = r.json()
     if data.get("payload") == []:
         return None
-    return data
+    return data.get("payload")[0].get("id")
 
 
-print(is_valid_email("abc@gmail.com"))
+# URL = "https://ccai.epacific.net/api/v1/accounts/1"
+# TOKEN = "78ARRSX2ofwSwVJJGivJiBTP"
+# print(search_eTouch_contact("nqtoan@dqn.vn", URL, TOKEN))
+# print(check_name("Duy"))
