@@ -11,7 +11,7 @@ stories:
   steps:
   - intent: tạm_biệt
   - action: utter_tạm_biệt
-# Không muốn tìm hiểu thêm
+# Không muốn tìm hiểu thêm điều gì khác
 - story: không_muốn_biết_thêm_điều_gì_khác
   steps:
   - intent: không_muốn_biết_thêm_điều_gì_khác
