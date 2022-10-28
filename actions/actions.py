@@ -248,7 +248,7 @@ class ValidateEmailPhoneWebsiteForm(FormValidationAction):
         user_email = tracker.get_slot("user_email")
 
         if user_email is not None:
-            return 
+            return {"user_email": slot_value}
 
         valid = is_valid_email(slot_value)
         if valid == "UNDELIVERABLE" or valid == False:
@@ -346,7 +346,7 @@ class ValidateEmailForm(FormValidationAction):
         user_email = tracker.get_slot("user_email")
 
         if user_email is not None:
-            return 
+            return {"user_email": slot_value}
 
         valid = is_valid_email(slot_value)
         if valid == "UNDELIVERABLE" or valid == False:
@@ -396,7 +396,7 @@ class ValidateEmailPhoneForm(FormValidationAction):
         user_email = tracker.get_slot("user_email")
 
         if user_email is not None:
-            return 
+            return {"user_email": slot_value}
 
         valid = is_valid_email(slot_value)
         if valid == "UNDELIVERABLE" or valid == False:
