@@ -137,10 +137,25 @@ def search_eTouch_contact(search_string, url, token, include_contact_inboxes=Fal
     data = r.json()
     if data.get("payload") == []:
         return None
-    return data.get("payload")[0].get("id")
+    payload = data.get("payload")[0]
+
+    # Return payload
+    company_name = payload.get("additional_attributes").get("company_name")
+    email = payload.get("email")
+    phone_number = payload.get("phone_number")
+    return_payload = {
+        "id": payload.get("id"),
+        "name": payload.get("name"),
+        "email": None if email == ""else email,
+        "phone_number": None if phone_number == "" else phone_number,
+        "company_name": None if company_name == "" else company_name,
+        "website": payload.get("custom_attributes").get("website")
+    }
+
+    return return_payload
 
 
 # URL = "https://ccai.epacific.net/api/v1/accounts/1"
 # TOKEN = "78ARRSX2ofwSwVJJGivJiBTP"
-# print(search_eTouch_contact("nqtoan@dqn.vn", URL, TOKEN))
+# print(search_eTouch_contact("84899199621", URL, TOKEN))
 # print(check_name("Duy"))

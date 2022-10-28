@@ -251,15 +251,26 @@ class ValidateEmailPhoneWebsiteForm(FormValidationAction):
             dispatcher.utter_message(
                 text=f"Em kiểm tra thấy email <{slot_value}> không tồn tại hoặc không thể tương tác. Vui lòng nhập lại")
             return {"user_email": None}
-        
+
         existed_contact = search_eTouch_contact(search_string=slot_value, url=URL, token=TOKEN)
         if existed_contact is not None:
+            eid = existed_contact.get('id')
+            phone_number = existed_contact.get("phone_number")
+            website = existed_contact.get("website")
+
             dispatcher.utter_message(
                 text=f"À, em kiểm tra trong hệ thống thấy {user_title} đã từng là khách hàng bên em")
             dispatcher.utter_message(
                 text=f"Vui lòng đợi em đồng bộ thông tin của {user_title} nha")
             dispatcher.utter_message(
-                text=f"Đồng bộ thông tin - EID: {existed_contact}")
+                text=f"Đồng bộ thông tin - EID: {eid}")
+
+            if phone_number is not None and website is not None:
+                return {"user_email": slot_value, "user_phone": phone_number, "user_website": website}
+            elif phone_number is not None and website is None:
+                return {"user_email": slot_value, "user_phone": phone_number}
+            elif phone_number is None and website is not None:
+                return {"user_email": slot_value, "user_website": website}
             return {"user_email": slot_value}
 
         dispatcher.utter_message(
@@ -334,15 +345,26 @@ class ValidateEmailForm(FormValidationAction):
             dispatcher.utter_message(
                 text=f"Em kiểm tra thấy email <{slot_value}> không tồn tại hoặc không thể tương tác. Vui lòng nhập lại")
             return {"user_email": None}
-        
+
         existed_contact = search_eTouch_contact(search_string=slot_value, url=URL, token=TOKEN)
         if existed_contact is not None:
+            eid = existed_contact.get('id')
+            phone_number = existed_contact.get("phone_number")
+            website = existed_contact.get("website")
+            
             dispatcher.utter_message(
                 text=f"À, em kiểm tra trong hệ thống thấy {user_title} đã từng là khách hàng bên em")
             dispatcher.utter_message(
                 text=f"Vui lòng đợi em đồng bộ thông tin của {user_title} nha")
             dispatcher.utter_message(
-                text=f"Đồng bộ thông tin - EID: {existed_contact}")
+                text=f"Đồng bộ thông tin - EID: {eid}")
+
+            if phone_number is not None and website is not None:
+                return {"user_email": slot_value, "user_phone": phone_number, "user_website": website}
+            elif phone_number is not None and website is None:
+                return {"user_email": slot_value, "user_phone": phone_number}
+            elif phone_number is None and website is not None:
+                return {"user_email": slot_value, "user_website": website}
             return {"user_email": slot_value}
 
         dispatcher.utter_message(
@@ -369,15 +391,26 @@ class ValidateEmailPhoneForm(FormValidationAction):
             dispatcher.utter_message(
                 text=f"Em kiểm tra thấy email <{slot_value}> không tồn tại hoặc không thể tương tác. Vui lòng nhập lại")
             return {"user_email": None}
-        
+
         existed_contact = search_eTouch_contact(search_string=slot_value, url=URL, token=TOKEN)
         if existed_contact is not None:
+            eid = existed_contact.get('id')
+            phone_number = existed_contact.get("phone_number")
+            website = existed_contact.get("website")
+            
             dispatcher.utter_message(
                 text=f"À, em kiểm tra trong hệ thống thấy {user_title} đã từng là khách hàng bên em")
             dispatcher.utter_message(
                 text=f"Vui lòng đợi em đồng bộ thông tin của {user_title} nha")
             dispatcher.utter_message(
-                text=f"Đồng bộ thông tin - EID: {existed_contact}")
+                text=f"Đồng bộ thông tin - EID: {eid}")
+
+            if phone_number is not None and website is not None:
+                return {"user_email": slot_value, "user_phone": phone_number, "user_website": website}
+            elif phone_number is not None and website is None:
+                return {"user_email": slot_value, "user_phone": phone_number}
+            elif phone_number is None and website is not None:
+                return {"user_email": slot_value, "user_website": website}
             return {"user_email": slot_value}
 
         dispatcher.utter_message(
