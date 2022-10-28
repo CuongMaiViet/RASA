@@ -399,7 +399,7 @@ class ValidateEmailPhoneForm(FormValidationAction):
             website = existed_contact.get("website")
             
             dispatcher.utter_message(
-                text=f"Em kiểm tra trong hệ thống thấy {user_title} đã từng là khách hàng bên em")
+                text=f"Em vừa kiểm tra trong hệ thống thấy {user_title} đã từng là khách hàng bên em")
             dispatcher.utter_message(
                 text=f"Vui lòng đợi em đồng bộ thông tin của {user_title} nha")
             dispatcher.utter_message(
