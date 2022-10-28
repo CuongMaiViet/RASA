@@ -159,6 +159,7 @@ nlu:
     - [Hùng](user_name)
     - [Huyền](user_name)
     - [Hải](user_name)
+    - [test](user_name)
 
 - intent: cung_cấp_email
   examples: |
