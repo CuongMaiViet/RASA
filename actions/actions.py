@@ -245,6 +245,10 @@ class ValidateEmailPhoneWebsiteForm(FormValidationAction):
     ) -> Dict[Text, Any]:
         user = User(tracker)
         user_title = user.get_title()
+        user_email = tracker.get_slot("user_email")
+
+        if user_email is not None:
+            return 
 
         valid = is_valid_email(slot_value)
         if valid == "UNDELIVERABLE" or valid == False:
@@ -339,6 +343,10 @@ class ValidateEmailForm(FormValidationAction):
     ) -> Dict[Text, Any]:
         user = User(tracker)
         user_title = user.get_title()
+        user_email = tracker.get_slot("user_email")
+
+        if user_email is not None:
+            return 
 
         valid = is_valid_email(slot_value)
         if valid == "UNDELIVERABLE" or valid == False:
@@ -385,6 +393,10 @@ class ValidateEmailPhoneForm(FormValidationAction):
     ) -> Dict[Text, Any]:
         user = User(tracker)
         user_title = user.get_title()
+        user_email = tracker.get_slot("user_email")
+
+        if user_email is not None:
+            return 
 
         valid = is_valid_email(slot_value)
         if valid == "UNDELIVERABLE" or valid == False:
