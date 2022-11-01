@@ -430,7 +430,7 @@ class ValidateEmailPhoneForm(FormValidationAction):
             "format").get("international")
         if valid is False or valid is None:
             dispatcher.utter_message(
-                text=f"Em kiểm tra thấy số điên thoại <{slot_value}> không hợp lệ. Vui lòng nhập lại")
+                text=f"Em vừa kiểm tra thấy số điên thoại <{slot_value}> không hợp lệ. Vui lòng nhập lại")
             return {"user_phone": None}
 
         if search_eTouch_contact(search_string=slot_value, url=URL, token=TOKEN) is not None:

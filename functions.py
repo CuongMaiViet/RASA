@@ -109,7 +109,7 @@ def is_valid_phone_number(input):
 
 def is_valid_site(url):
     if not isinstance(url, str):
-        print("url is not string")
+        print("URL website: Không phải string")
         return
 
     URL = "https://api.geekflare.com/up"
