@@ -100,9 +100,9 @@ responses:
     - text: "Cho em xin địa chỉ website của công ty {user_title} đi ạ"
 
   utter_ask_user_company_tin:
-    - text: "Mã số thuế doanh nghiệp của {user_title} là bao nhiêu thế ạ? "
-    - text: "Cho Mai xin mã số thuế của công ty {user_title} đi ạ"
-    - text: "Cho em xin mã số thuế doanh nghiệp của {user_title} đi ạ"
+    - text: "Mã số thuế doanh nghiệp của {user_title} là bao nhiêu thế ạ? (VD: MST 0123456789)"
+    - text: "Cho Mai xin mã số thuế của công ty {user_title} đi ạ (VD: MST 0123456789)"
+    - text: "Cho em xin mã số thuế doanh nghiệp của {user_title} đi ạ (VD: MST 0123456789)"
 
 actions:
   - action_greet

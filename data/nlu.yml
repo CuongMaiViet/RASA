@@ -1123,6 +1123,8 @@ nlu:
   examples: |
     - [84366166535](user_phone)
     - [84376120177](user_phone)
+    - sdt [84376120177](user_phone)
+    - SDT [84376120177](user_phone)
     - số điện thoại là [84376120177](user_phone)
     - điện thoại của anh là [84903234567](user_phone)
     - điện thoại của chị là [84903234567](user_phone)
@@ -1145,9 +1147,9 @@ nlu:
 
 - intent: cung_cấp_mã_số_thuế_doanh_nghiệp
   examples: |
-    - [0313158926](user_company_tin)
     - mã số thuế doanh nghiệp là [0313158926](user_company_tin)
     - MST [0313158926](user_company_tin)
+    - mst [0313158926](user_company_tin)
     - mã là [0303793975](user_company_tin)
     - mã số thuế doanh nghiệp của mình là [0303793975](user_company_tin)
 

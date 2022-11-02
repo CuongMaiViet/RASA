@@ -232,7 +232,7 @@ class ValidateUserInformationForm(FormValidationAction):
             title = "chị"
 
         dispatcher.utter_message(
-            text=f"Cập nhật thông tin - Giới tính: {'nam' if title == 'anh' else 'nữ'}")
+            text=f"Cập nhật thông tin - Gender: {'nam' if title == 'anh' else 'nữ'}")
         return {"user_title": title}
 
     async def validate_user_name(
@@ -258,7 +258,7 @@ class ValidateUserInformationForm(FormValidationAction):
 
         first_name = checked_name.get("first_name")
         dispatcher.utter_message(
-            text=f"Cập nhật thông tin - Tên: {first_name}")
+            text=f"Cập nhật thông tin - Username: {first_name}")
         return {"user_name": first_name}
 
 
@@ -332,7 +332,7 @@ class ValidateEmailPhoneWebsiteForm(FormValidationAction):
             return {"user_phone": None}
 
         dispatcher.utter_message(
-            text=f"Cập nhật thông tin - SDT: {international_phone_number}")
+            text=f"Cập nhật thông tin - Phone: {international_phone_number}")
         return {"user_phone": slot_value}
 
     async def validate_user_website(
@@ -422,7 +422,7 @@ class ValidateTinForm(FormValidationAction):
             return {"user_company_tin": None}
 
         dispatcher.utter_message(
-            text=f"Cập nhật thông tin => Tên công ty: {company_name}")
+            text=f"Cập nhật thông tin - Company: {company_name}")
         return {"user_company_tin": slot_value}
 
 
@@ -496,5 +496,5 @@ class ValidateEmailPhoneForm(FormValidationAction):
             return {"user_phone": None}
 
         dispatcher.utter_message(
-            text=f"Cập nhật thông tin - SDT: {international_phone_number}")
+            text=f"Cập nhật thông tin - Phone: {international_phone_number}")
         return {"user_phone": slot_value}
