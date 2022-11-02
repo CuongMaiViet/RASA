@@ -75,10 +75,10 @@ responses:
     - text: "Cho em xin tên của quý khách đi ạ"
   
   utter_ask_user_title:
-    - text: "Quý khách là nam hay nữ ạ? (nam/nữ)"
-    - text: "Xin hỏi vị khách quý đây là nam hay nữ vậy ạ? (nam/nữ)"
-    - text: "Xin hỏi quý khách đây là nam hay nữ vậy ạ? (nam/nữ)"
-    - text: "Mai muốn biết quý khách đây là nữ hay là nam vậy ạ? (nam/nữ)"
+    - text: "Quý khách là nam hay nữ ạ? (nam/nữ vui lòng hãy viết thường)"
+    - text: "Xin hỏi vị khách quý đây là nam hay nữ vậy ạ? (nam/nữ vui lòng hãy viết thường)"
+    - text: "Xin hỏi quý khách đây là nam hay nữ vậy ạ? (nam/nữ vui lòng hãy viết thường)"
+    - text: "Mai muốn biết quý khách đây là nữ hay là nam vậy ạ? (nam/nữ vui lòng hãy viết thường)"
 
   utter_ask_user_email:
     - text: "Cho em xin email của {user_title} đi ạ"
