@@ -1124,11 +1124,11 @@ nlu:
     - [84366166535](user_phone)
     - [84376120177](user_phone)
     - số điện thoại là [84376120177](user_phone)
-    - điện thoại của anh là [0903234567](user_phone)
-    - điện thoại của chị là [0903234567](user_phone)
-    - sdt [09037192364](user_phone)
-    - so dien thoai la [0903318237](user_phone)
-    - so dien thoai [0376331827](user_phone)
+    - điện thoại của anh là [84903234567](user_phone)
+    - điện thoại của chị là [84903234567](user_phone)
+    - sdt [849037192364](user_phone)
+    - so dien thoai la [84903318237](user_phone)
+    - so dien thoai [84376331827](user_phone)
 
 - intent: cung_cấp_địa_chỉ_website
   examples: |
@@ -1145,11 +1145,11 @@ nlu:
 
 - intent: cung_cấp_mã_số_thuế_doanh_nghiệp
   examples: |
-    - [0313158926](user_company_TIN)
-    - mã số thuế doanh nghiệp là [0313158926](user_company_TIN)
-    - MST [0313158926](user_company_TIN)
-    - mã là [0303793975](user_company_TIN)
-    - mã số thuế doanh nghiệp của mình là [0303793975](user_company_TIN)
+    - [0313158926](user_company_tin)
+    - mã số thuế doanh nghiệp là [0313158926](user_company_tin)
+    - MST [0313158926](user_company_tin)
+    - mã là [0303793975](user_company_tin)
+    - mã số thuế doanh nghiệp của mình là [0303793975](user_company_tin)
 
 - intent: gặp_chuyên_viên_tư_vấn_giải_pháp
   examples: |

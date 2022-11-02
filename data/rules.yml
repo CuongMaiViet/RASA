@@ -23,6 +23,7 @@ rules:
 - rule: nlu_fallback
   steps:
   - intent: nlu_fallback
+  - action: action_gate
   - action: utter_ask_rephrase
   
 # Hỏi gì đó  
@@ -181,14 +182,14 @@ rules:
   - intent: hỗ_trợ_đăng_ký_tên_định_danh
   - action: action_gate
   - action: action_explain_fill_form
-  - action: TIN_form
-  - active_loop: TIN_form
+  - action: tin_form
+  - active_loop: tin_form
 
-- rule: Finish TIN_form
+- rule: Finish tin_form
   condition:
-    - active_loop: TIN_form
+    - active_loop: tin_form
   steps:
-    - action: TIN_form
+    - action: tin_form
     - active_loop: null
     - slot_was_set:
         - requested_slot: null

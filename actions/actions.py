@@ -55,7 +55,7 @@ class ActionGreet(Action):
         user_email = tracker.get_slot("user_email")
         user_phone = tracker.get_slot("user_phone")
         user_website = tracker.get_slot("user_website")
-        user_company_TIN = tracker.get_slot("user_company_TIN")
+        user_company_tin = tracker.get_slot("user_company_tin")
 
         if intent == "xử_lý_đơn_hàng" or intent == "xử_lý_hóa_đơn" or intent == "hỗ_trợ_kỹ_thuật_sử_dụng":
             if user_email is not None and user_phone is not None:
@@ -97,7 +97,7 @@ class ActionGreet(Action):
             return
 
         if intent == "hỗ_trợ_đăng_ký_tên_định_danh":
-            if user_company_TIN is not None:
+            if user_company_tin is not None:
                 return
 
             dispatcher.utter_message(
@@ -404,11 +404,11 @@ class ValidateEmailForm(FormValidationAction):
         return {"user_email": slot_value}
 
 
-class ValidateTINForm(FormValidationAction):
+class ValidateTinForm(FormValidationAction):
     def name(self) -> Text:
-        return "validate_TIN_form"
+        return "validate_tin_form"
 
-    async def validate_user_company_TIN(
+    async def validate_user_company_tin(
         self,
         slot_value: Any,
         dispatcher: CollectingDispatcher,
@@ -419,11 +419,11 @@ class ValidateTINForm(FormValidationAction):
         if company_name is None:
             dispatcher.utter_message(
                 text=f"Em kiểm tra thấy mã số thuế <{slot_value}> không tồn tại. Vui lòng nhập lại")
-            return {"user_company_TIN": None}
+            return {"user_company_tin": None}
 
         dispatcher.utter_message(
             text=f"Cập nhật thông tin => Tên công ty: {company_name}")
-        return {"user_company_TIN": slot_value}
+        return {"user_company_tin": slot_value}
 
 
 class ValidateEmailPhoneForm(FormValidationAction):

@@ -48,7 +48,7 @@ intents:
         - user_website
   - cung_cấp_mã_số_thuế_doanh_nghiệp:
       use_entities:
-        - user_company_TIN
+        - user_company_tin
 
 responses:
   utter_tạm_biệt:
@@ -99,10 +99,10 @@ responses:
     - text: "Cho Mai xin địa chỉ website của công ty {user_title} đi ạ"
     - text: "Cho em xin địa chỉ website của công ty {user_title} đi ạ"
 
-  utter_ask_user_company_TIN:
-    - text: "Mã số thuế doanh nghiệp của {user_title} là gì thế ạ?"
+  utter_ask_user_company_tin:
+    - text: "Mã số thuế doanh nghiệp của {user_title} là bao nhiêu thế ạ? "
     - text: "Cho Mai xin mã số thuế của công ty {user_title} đi ạ"
-    - text: "Cho em xin mã số thuế doanh nghiệp {user_title} đi ạ"
+    - text: "Cho em xin mã số thuế doanh nghiệp của {user_title} đi ạ"
 
 actions:
   - action_greet
@@ -114,7 +114,7 @@ actions:
   - validate_email_phone_website_form
   - validate_email_form
   - validate_email_phone_form
-  - validate_TIN_form
+  - validate_tin_form
 
 entities:
   - channel
@@ -123,7 +123,7 @@ entities:
   - user_email
   - user_phone
   - user_website
-  - user_company_TIN
+  - user_company_tin
 
 slots:
   channel:
@@ -173,12 +173,12 @@ slots:
         entity: user_website
         intent: cung_cấp_địa_chỉ_website
 
-  user_company_TIN:
+  user_company_tin:
     type: text
     influence_conversation: true
     mappings:
       - type: from_entity
-        entity: user_company_TIN
+        entity: user_company_tin
         intent: cung_cấp_mã_số_thuế_doanh_nghiệp
 
 forms:
@@ -202,9 +202,9 @@ forms:
       - user_email
       - user_phone
 
-  TIN_form:
+  tin_form:
     required_slots:
-      - user_company_TIN
+      - user_company_tin
 
 session_config:
   session_expiration_time: 60

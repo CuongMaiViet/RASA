@@ -47,11 +47,12 @@ def check_agent_availability(url, token):
 
 
 def check_TIN(id):
-    r = requests.get(url=f"https://thongtindoanhnghiep.co/api/company/{id}")
-    if not r.ok:
-        return "Failed to check"
-    data = r.json()
-    return data.get('Title')
+    # r = requests.get(url=f"https://thongtindoanhnghiep.co/api/company/{id}")
+    # if not r.ok:
+    #     return "Failed to check"
+    # data = r.json()
+    # return data.get('Title')
+    return id
 
 
 def check_name(name):
