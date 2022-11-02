@@ -175,3 +175,8 @@ rules:
         - requested_slot: null
     - action: action_handoff
 
+- rule: hỗ_trợ_đăng_ký_tên_định_danh
+  steps:
+  - intent: hỗ_trợ_đăng_ký_tên_định_danh
+  - action: action_gate
+  - action: action_handoff

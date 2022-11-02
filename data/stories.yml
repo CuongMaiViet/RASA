@@ -1,18 +1,18 @@
 version: "3.1"
 
 stories:
-# Xem menu
-- story: xem_menu
-  steps:
-  - intent: xem_menu
-  - action: action_main
-# Tạm biệt
-- story: tạm_biệt
-  steps:
-  - intent: tạm_biệt
-  - action: utter_tạm_biệt
-# Không muốn tìm hiểu thêm điều gì khác
-- story: không_muốn_biết_thêm_điều_gì_khác
-  steps:
-  - intent: không_muốn_biết_thêm_điều_gì_khác
-  - action: utter_tạm_biệt
+  # Xem menu
+  - story: xem_menu
+    steps:
+      - intent: xem_menu
+      - action: action_main
+  # Tạm biệt
+  - story: tạm_biệt
+    steps:
+      - intent: tạm_biệt
+      - action: utter_tạm_biệt
+  # Không muốn tìm hiểu thêm điều gì khác
+  - story: không_muốn_biết_thêm_điều_gì_khác
+    steps:
+      - intent: không_muốn_biết_thêm_điều_gì_khác
+      - action: utter_tạm_biệt

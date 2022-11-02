@@ -1286,3 +1286,9 @@ nlu:
     - biết thêm làm cái gì
     - thôi em
     - hoãn lại đi
+
+- intent: hỗ_trợ_đăng_ký_tên_định_danh
+  examples: |
+    - Tôi muốn đc tư vấn thêm về dịch vụ hỗ trợ đăng ký tên định danh
+    - Bên bạn có hỗ trợ đăng ký tên định danh ko?
+    - mình cần tư vấn dịch vụ định danh công ty

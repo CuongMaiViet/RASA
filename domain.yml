@@ -1,6 +1,23 @@
 version: "3.1"
 
 intents:
+  # Khu vực không có điều kiện đi kèm
+  - xem_menu
+  - không_muốn_biết_thêm_điều_gì_khác
+  - hỗ_trợ_đăng_ký_tên_định_danh
+  - gặp_chuyên_viên_tư_vấn_giải_pháp
+  - khách_hàng_hiện_hữu
+  - tìm_kiếm_thông_tin
+  - đăng_ký_làm_đại_lý
+  - tư_vấn_hệ_thống_trung_tâm_liên_lạc
+  - tư_vấn_hệ_thống_trung_tâm_liên_lạc_cho_doanh_nghiệp
+  - tư_vấn_hệ_thống_trung_tâm_liên_lạc_cho_khách_hàng
+  - đánh_giá_các_sản_phẩm_khác_của_ePacific
+  - hỗ_trợ_kỹ_thuật_sử_dụng
+  - xử_lý_đơn_hàng_hoa_đơn
+  - xử_lý_đơn_hàng
+  - xử_lý_hóa_đơn
+  # Khu vực có điều kiện đi kèm
   - chào_mừng:
       ignore_entities:
         - user_name
@@ -13,9 +30,6 @@ intents:
   - cần_hỏi_gì_đó:
       ignore_entities:
         - user_name
-  - xem_menu
-  - không_muốn_biết_thêm_điều_gì_khác
-  # INFORMATION
   - cung_cấp_giới_tính:
       use_entities:
         - user_title
@@ -32,20 +46,6 @@ intents:
   - cung_cấp_địa_chỉ_website:
       use_entities:
         - user_website
-  # LVL0
-  - gặp_chuyên_viên_tư_vấn_giải_pháp
-  - khách_hàng_hiện_hữu
-  - tìm_kiếm_thông_tin
-  - đăng_ký_làm_đại_lý
-  # LVL1
-  - tư_vấn_hệ_thống_trung_tâm_liên_lạc
-  - tư_vấn_hệ_thống_trung_tâm_liên_lạc_cho_doanh_nghiệp
-  - tư_vấn_hệ_thống_trung_tâm_liên_lạc_cho_khách_hàng
-  - đánh_giá_các_sản_phẩm_khác_của_ePacific
-  - hỗ_trợ_kỹ_thuật_sử_dụng
-  - xử_lý_đơn_hàng_hoa_đơn
-  - xử_lý_đơn_hàng
-  - xử_lý_hóa_đơn
 
 responses:
   utter_tạm_biệt:
@@ -53,9 +53,9 @@ responses:
 
   utter_tư_vấn_hệ_thống_trung_tâm_liên_lạc:
     - text: "Cho doanh nghiệp của {user_title} hay cho khách hàng của {user_title} ạ?"
-  
+
   utter_em_nghe_nè:
-  - text: "Dạ vâng, Mai nghe nè"
+    - text: "Dạ vâng, Mai nghe nè"
 
   utter_default:
     - text: "Xin lỗi, em không hiểu. Vui lòng diễn đạt lại giúp em ạ"
@@ -73,7 +73,7 @@ responses:
     - text: "Tên của quý khách là gì vậy ạ?"
     - text: "Cho Mai xin tên của quý khách đi ạ"
     - text: "Cho em xin tên của quý khách đi ạ"
-  
+
   utter_ask_user_title:
     - text: "Quý khách là nam hay nữ ạ? (nam/nữ vui lòng hãy viết thường)"
     - text: "Xin hỏi vị khách quý đây là nam hay nữ vậy ạ? (nam/nữ vui lòng hãy viết thường)"
