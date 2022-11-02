@@ -3,13 +3,14 @@ from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker, FormValidationAction
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.types import DomainDict
+from rasa_sdk.events import UserUttered, ActionExecuted
 
 from responses import Responses
 from User import User
 from functions import check_agent_availability, check_name, is_alphabet, is_valid_site, is_valid_phone_number, is_valid_email, read_json, search_eTouch_contact
 
-MALE = ["nam", "male", "anh", "chú", "chu"]
-FEMALE = ["nữ", "female", "chị", "cô", "chi", "co"]
+MALE = ["nam", "male", "anh", "chú", "chu", "trai"]
+FEMALE = ["nữ", "female", "chị", "cô", "chi", "co", "gái"]
 LEGAL_CHANNELS = ["ChannelWebWidget", "ChannelApi", "ChannelTelegram"]
 
 URL = "https://ccai.epacific.net/api/v1/accounts/1"
@@ -93,6 +94,24 @@ class ActionGreet(Action):
             dispatcher.utter_message(
                 text=f"Nhưng mà để tiện liên lạc, {user_title} vui lòng cho em biết một số thông tin sau")
             return
+
+        return
+
+
+class ActionGate(Action):
+
+    def name(self) -> Text:
+        return "action_gate"
+
+    async def run(self, dispatcher: CollectingDispatcher,
+                  tracker: Tracker,
+                  domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        user_name = tracker.get_slot("user_name")
+        user_title = tracker.get_slot("user_title")
+
+        if user_title is None and user_name is None:
+            data = {"intent": {"name": "chào_mừng", "confidence": 1.0}}
+            return [ActionExecuted("action_listen"), UserUttered(text="hi", parse_data=data)]
 
         return
 
@@ -252,7 +271,8 @@ class ValidateEmailPhoneWebsiteForm(FormValidationAction):
                 text=f"Em kiểm tra thấy email <{slot_value}> không tồn tại hoặc không thể tương tác. Vui lòng nhập lại")
             return {"user_email": None}
 
-        existed_contact = search_eTouch_contact(search_string=slot_value, url=URL, token=TOKEN)
+        existed_contact = search_eTouch_contact(
+            search_string=slot_value, url=URL, token=TOKEN)
         if existed_contact is not None:
             eid = existed_contact.get('id')
             phone_number = existed_contact.get("phone_number")
@@ -346,12 +366,13 @@ class ValidateEmailForm(FormValidationAction):
                 text=f"Em kiểm tra thấy email <{slot_value}> không tồn tại hoặc không thể tương tác. Vui lòng nhập lại")
             return {"user_email": None}
 
-        existed_contact = search_eTouch_contact(search_string=slot_value, url=URL, token=TOKEN)
+        existed_contact = search_eTouch_contact(
+            search_string=slot_value, url=URL, token=TOKEN)
         if existed_contact is not None:
             eid = existed_contact.get('id')
             phone_number = existed_contact.get("phone_number")
             website = existed_contact.get("website")
-            
+
             dispatcher.utter_message(
                 text=f"Em vừa kiểm tra trong hệ thống thấy {user_title} đã từng là khách hàng bên em")
             dispatcher.utter_message(
@@ -392,12 +413,13 @@ class ValidateEmailPhoneForm(FormValidationAction):
                 text=f"Em kiểm tra thấy email <{slot_value}> không tồn tại hoặc không thể tương tác. Vui lòng nhập lại")
             return {"user_email": None}
 
-        existed_contact = search_eTouch_contact(search_string=slot_value, url=URL, token=TOKEN)
+        existed_contact = search_eTouch_contact(
+            search_string=slot_value, url=URL, token=TOKEN)
         if existed_contact is not None:
             eid = existed_contact.get('id')
             phone_number = existed_contact.get("phone_number")
             website = existed_contact.get("website")
-            
+
             dispatcher.utter_message(
                 text=f"Em vừa kiểm tra trong hệ thống thấy {user_title} đã từng là khách hàng bên em")
             dispatcher.utter_message(

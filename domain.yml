@@ -98,6 +98,7 @@ responses:
 
 actions:
   - action_greet
+  - action_gate
   - action_main
   - action_handoff
   - action_explain_fill_form
