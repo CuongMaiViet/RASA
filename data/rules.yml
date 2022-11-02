@@ -175,8 +175,21 @@ rules:
         - requested_slot: null
     - action: action_handoff
 
+# Hỗ trợ đăng ký tên định danh
 - rule: hỗ_trợ_đăng_ký_tên_định_danh
   steps:
   - intent: hỗ_trợ_đăng_ký_tên_định_danh
   - action: action_gate
-  - action: action_handoff
+  - action: action_explain_fill_form
+  - action: TIN_form
+  - active_loop: TIN_form
+
+- rule: Finish TIN_form
+  condition:
+    - active_loop: TIN_form
+  steps:
+    - action: TIN_form
+    - active_loop: null
+    - slot_was_set:
+        - requested_slot: null
+    - action: action_handoff

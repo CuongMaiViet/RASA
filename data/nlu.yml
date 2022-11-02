@@ -1143,6 +1143,14 @@ nlu:
     - website của công ty chị [getfly.vn](user_website)
     - [vnvc.vn](user_website)
 
+- intent: cung_cấp_mã_số_thuế_doanh_nghiệp
+  examples: |
+    - [0313158926](user_company_TIN)
+    - mã số thuế doanh nghiệp là [0313158926](user_company_TIN)
+    - MST [0313158926](user_company_TIN)
+    - mã là [0303793975](user_company_TIN)
+    - mã số thuế doanh nghiệp của mình là [0303793975](user_company_TIN)
+
 - intent: gặp_chuyên_viên_tư_vấn_giải_pháp
   examples: |
     - anh muốn nói chuyện với sales

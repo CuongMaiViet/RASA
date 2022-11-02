@@ -46,6 +46,9 @@ intents:
   - cung_cấp_địa_chỉ_website:
       use_entities:
         - user_website
+  - cung_cấp_mã_số_thuế_doanh_nghiệp:
+      use_entities:
+        - user_company_TIN
 
 responses:
   utter_tạm_biệt:
@@ -87,14 +90,19 @@ responses:
     - text: "{user_title} vui lòng cho Mai xin email"
 
   utter_ask_user_phone:
-    - text: "Cho Mai xin số điện thoại của {user_title} đi ạ"
-    - text: "Số điện thoại của {user_title} là gì vậy ạ?"
-    - text: "Cho em xin số điện thoại của {user_title} đi ạ"
+    - text: "Cho Mai xin số điện thoại của {user_title} đi ạ (VD: 84333308016)"
+    - text: "Số điện thoại của {user_title} là gì vậy ạ? (VD: 84964348489)"
+    - text: "Cho em xin số điện thoại của {user_title} đi ạ (VD: 84938989101)"
 
   utter_ask_user_website:
     - text: "Website công ty của {user_title} là gì thế ạ?"
     - text: "Cho Mai xin địa chỉ website của công ty {user_title} đi ạ"
     - text: "Cho em xin địa chỉ website của công ty {user_title} đi ạ"
+
+  utter_ask_user_company_TIN:
+    - text: "Mã số thuế doanh nghiệp của {user_title} là gì thế ạ?"
+    - text: "Cho Mai xin mã số thuế của công ty {user_title} đi ạ"
+    - text: "Cho em xin mã số thuế doanh nghiệp {user_title} đi ạ"
 
 actions:
   - action_greet
@@ -106,6 +114,7 @@ actions:
   - validate_email_phone_website_form
   - validate_email_form
   - validate_email_phone_form
+  - validate_TIN_form
 
 entities:
   - channel
@@ -114,6 +123,7 @@ entities:
   - user_email
   - user_phone
   - user_website
+  - user_company_TIN
 
 slots:
   channel:
@@ -163,6 +173,14 @@ slots:
         entity: user_website
         intent: cung_cấp_địa_chỉ_website
 
+  user_company_TIN:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: user_company_TIN
+        intent: cung_cấp_mã_số_thuế_doanh_nghiệp
+
 forms:
   user_information_form:
     required_slots:
@@ -183,6 +201,10 @@ forms:
     required_slots:
       - user_email
       - user_phone
+
+  TIN_form:
+    required_slots:
+      - user_company_TIN
 
 session_config:
   session_expiration_time: 60

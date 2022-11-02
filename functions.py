@@ -46,6 +46,14 @@ def check_agent_availability(url, token):
     return any(val["availability_status"] == "online" for val in data)
 
 
+def check_TIN(id):
+    r = requests.get(url=f"https://thongtindoanhnghiep.co/api/company/{id}")
+    if not r.ok:
+        return "Failed to check"
+    data = r.json()
+    return data.get('Title')
+
+
 def check_name(name):
     capitalized_name = capAll(name)
     data = read_json("name.json")
@@ -155,7 +163,3 @@ def search_eTouch_contact(search_string, url, token, include_contact_inboxes=Fal
     return return_payload
 
 
-# URL = "https://ccai.epacific.net/api/v1/accounts/1"
-# TOKEN = "78ARRSX2ofwSwVJJGivJiBTP"
-# print(search_eTouch_contact("84899199621", URL, TOKEN))
-# print(check_name("Duy"))
