@@ -21,6 +21,10 @@ nlu:
     - good afternoon
     - chào
     - Chào
+    - chao
+    - Chao
+    - Alo
+    - alo
     - xin chào
     - Xin chào
     - chào buổi sáng
@@ -1201,6 +1205,11 @@ nlu:
     - tìm kiếm thông tin
     - tìm hiểu thông tin
     - anh đang xem các sản phẩm trên web
+
+- intent: xin_số_điện_thoại_chăm_sóc_khách_hàng
+  examples: |
+    - cho mình xin số chăm sóc khách hàng bên b
+    - xin số chăm sóc khách hàng của công ty
     
 - intent: đăng_ký_làm_đại_lý
   examples: |
@@ -1222,6 +1231,11 @@ nlu:
     - hệ thống trung tâm liên lạc
     - trung tâm liên lạc
     - tư vấn về hệ thống
+    - mình muốn lắp tổng đài 1900
+    - tớ muốn lắp tổng đài đầu số 1800
+    - lắp tổng đài
+    - lắp hệ thống tổng đài
+    - lắp hệ thống trung tâm liên lạc
 
 - intent: tư_vấn_hệ_thống_trung_tâm_liên_lạc_cho_doanh_nghiệp
   examples: |

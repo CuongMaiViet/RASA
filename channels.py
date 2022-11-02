@@ -117,6 +117,11 @@ class Channels:
                      "value": '/xử_lý_hóa_đơn'}
                 ]
             },
+            "xin_số_điện_thoại_chăm_sóc_khách_hàng": {
+                "message": utter.xin_số_điện_thoại_chăm_sóc_khách_hàng(),
+                "message_type": "full_of_text",
+                "payload": []
+            },
             "tìm_kiếm_thông_tin": {
                 "message": utter.tìm_kiếm_thông_tin(),
                 "message_type": "cards",

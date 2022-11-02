@@ -55,6 +55,13 @@ class Utters:
                 f"{self.capTitle} vui lòng nhấp vào liên kết tới thông tin chi tiết về các giải pháp cải thiện trải nghiệm theo từng kiểu đối tượng, dưới đây:"]
         ])
 
+    def xin_số_điện_thoại_chăm_sóc_khách_hàng(self):
+        return secrets.choice([
+            f"Số chăm sóc KH bên em là 1900-0038 ạ",
+            f"1900-0038 ạ",
+            f"Dạ gọi tới 1900-0038 là được ạ",
+        ])
+
     def đăng_ký_làm_đại_lý(self):
         return secrets.choice([
             f"Để tiện liên lạc {self.user_title} vui lòng cho {self.bot_name} biết thông tin sau:"

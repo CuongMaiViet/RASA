@@ -8,6 +8,7 @@ intents:
   - gặp_chuyên_viên_tư_vấn_giải_pháp
   - khách_hàng_hiện_hữu
   - tìm_kiếm_thông_tin
+  - xin_số_điện_thoại_chăm_sóc_khách_hàng
   - đăng_ký_làm_đại_lý
   - tư_vấn_hệ_thống_trung_tâm_liên_lạc
   - tư_vấn_hệ_thống_trung_tâm_liên_lạc_cho_doanh_nghiệp

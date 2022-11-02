@@ -157,6 +157,12 @@ rules:
   - action: action_gate
   - action: action_main
 
+# Tìm kiếm thông tin
+- rule: xin_số_điện_thoại_chăm_sóc_khách_hàng
+  steps:
+  - intent: xin_số_điện_thoại_chăm_sóc_khách_hàng
+  - action: action_main
+
 # Đăng ký làm đối tác đại lý
 - rule: đăng_ký_làm_đại_lý
   steps:
