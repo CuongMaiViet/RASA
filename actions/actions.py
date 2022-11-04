@@ -224,7 +224,7 @@ class ValidateUserInformationForm(FormValidationAction):
         gender = slot_value.lower()
         if gender not in MALE and gender not in FEMALE:
             dispatcher.utter_message(
-                text="Giới tính không đúng. Vui lòng nhập giới tính hợp lệ (nam/nữ)")
+                text="Giới tính không đúng. Vui lòng nhập lại")
             return {"user_title": None}
 
         title = "anh"
@@ -247,7 +247,7 @@ class ValidateUserInformationForm(FormValidationAction):
         valid = is_alphabet(slot_value)
         if not valid:
             dispatcher.utter_message(
-                text=f"Tên {user_title} không nên chứa số hay ký tự đặc biệt vì nó không phải là một cái tên đúng @@")
+                text=f"Tên {user_title} không nên chứa số hay ký tự đặc biệt vì nó không phải là một cái tên đúng")
             return {"user_name": None}
 
         checked_name = check_name(slot_value)
