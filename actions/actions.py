@@ -279,7 +279,7 @@ class ValidateEmailPhoneWebsiteForm(FormValidationAction):
         valid = is_valid_email(slot_value)
         if valid == "UNDELIVERABLE" or valid == False:
             dispatcher.utter_message(
-                text=f"Em kiểm tra thấy email <{slot_value}> không tồn tại hoặc không thể tương tác. Vui lòng nhập lại")
+                text=f"Em kiểm tra thấy email <{slot_value}> không tồn tại hoặc không thể tương tác. Vui lòng nhập lại.")
             return {"user_email": None}
 
         existed_contact = search_eTouch_contact(
